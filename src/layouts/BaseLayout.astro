@@ -1,6 +1,5 @@
 ---
 import HeadSEO from "@/components/HeadSEO.astro";
-import Footer from "@/components/Footer.astro";
 import Header from "@/components/Header.astro";
 
 interface Props {
@@ -22,7 +21,6 @@ const { title, description, ogImage } = Astro.props;
 			<main class="flex-auto">
 				<slot />
 			</main>
-			<Footer />
 		</div>
 	</body>
 </html>
