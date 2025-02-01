@@ -1,22 +1,39 @@
 ---
-import { buttonVariants } from "@/components/ui/button"
+import { buttonVariants } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle.astro";
 ---
 
-
 <header class="flex justify-between items-center px-16 py-8">
 	<div class="flex items-center space-x-4">
-	  <img src="/src/images/jeff-anders-photo.jpg" alt="Jeff Anders avatar" class="w-8 h-8 rounded-sm" />
-	  <h2 class="font-bold text-lg">Jeff Anders</h2>
+		<img
+			src="/src/images/jeff-anders-photo.jpg"
+			alt="Jeff Anders avatar"
+			class="w-8 h-8 rounded-sm"
+		/>
+		<h2 class="font-bold text-lg">Jeff Anders</h2>
 	</div>
 	<nav class="flex space-x-2">
-	  <ul class="flex space-x-1">
-		<li><a class={buttonVariants({ variant: "link" })} href="#teams">Teams</a></li>
-		<li><a class={buttonVariants({ variant: "link" })} href="#projects">Projects</a></li>
-		<li><a class={buttonVariants({ variant: "link" })} href="#talks">Talks</a></li>
-		<li><a class={buttonVariants({ variant: "link" })} href="#lists">Lists</a></li>
-		<li><a class={buttonVariants({ variant: "link" })} href="#contact">Contact</a></li>
-	</ul>
-	<ThemeToggle />
+		<ul class="flex space-x-1">
+			<li>
+				<a class={buttonVariants({ variant: "link" })} href="#teams">Teams</a>
+			</li>
+			<li>
+				<a class={buttonVariants({ variant: "link" })} href="#projects"
+					>Projects</a
+				>
+			</li>
+			<li>
+				<a class={buttonVariants({ variant: "link" })} href="#talks">Talks</a>
+			</li>
+			<li>
+				<a class={buttonVariants({ variant: "link" })} href="#lists">Lists</a>
+			</li>
+			<li>
+				<a class={buttonVariants({ variant: "link" })} href="#contact"
+					>Contact</a
+				>
+			</li>
+		</ul>
+		<ThemeToggle />
 	</nav>
-  </header>
+</header>
