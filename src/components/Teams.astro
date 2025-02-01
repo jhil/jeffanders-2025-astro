@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+import { ScrollArea } from "@/components/ui/scroll-area";
 
 /*
 Expects a prop `teams`, an array of objects with:
@@ -12,8 +12,8 @@ Expects a prop `teams`, an array of objects with:
 const { teams } = Astro.props;
 ---
 
-<section id="teams" class="px-4 py-8">
-	<ScrollArea className="whitespace-nowrap w-full flex overflow-x-auto">
+<section id="teams" class="px-4 py-8 overflow-hidden">
+	<ScrollArea className="flex overflow-x-auto">
 		<div class="flex gap-x-12">
 			{
 				teams.map(
