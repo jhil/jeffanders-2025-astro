@@ -1,0 +1,46 @@
+---
+import { Image } from "astro:assets";
+/*
+  Expects a prop `projects`, an array of objects from the 'projects' collection.
+  Each project object contains:
+    - data: an object with keys: title, brief, date, thumbnail, external (optional)
+    - slug: string (generated from the MDX file name)
+*/
+interface Project {
+  data: {
+    title: string;
+    brief: string;
+    date: string;
+    thumbnail: string;
+    external?: string;
+  };
+  slug: string;
+}
+
+const { projects }: { projects: Project[] } = Astro.props as { projects: Project[] };
+---
+
+<div class="grid gap-6 justify-center grid-cols-[repeat(auto-fit,minmax(10rem,12rem))]">
+  {projects.map((project) => {
+    const fm = project.data;
+    // If external URL is provided, use that; otherwise, link to the internal project page.
+    const link = fm.external ? fm.external : `/projects/${project.slug}`;
+    const target = fm.external ? "_blank" : "_self";
+    return (
+      <a href={link} target={target} class="block">
+        <div class="relative w-full aspect-[3/2]">
+          <Image
+            src={fm.thumbnail}
+            alt={fm.title}
+            width={384}
+            height={256}
+            class="object-cover rounded-md"
+			loading="lazy"
+          />
+        </div>
+        <h3 class="mt-2 text-base font-semibold">{fm.title}</h3>
+        <p class="mt-1 text-sm text-gray-600">{fm.brief}</p>
+      </a>
+    );
+  })}
+</div>

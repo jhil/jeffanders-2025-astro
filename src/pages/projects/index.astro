@@ -1,0 +1,12 @@
+---
+import ProjectsGrid from '../../components/ProjectsGrid.astro';
+import { getCollection } from 'astro:content';
+
+// Load all MDX pages from the "projects" collection
+const projects = await getCollection('projects');
+
+// Optionally sort the projects by date (newest first)
+projects.sort((a, b) => new Date(b.data.date) - new Date(a.data.date));
+---
+
+<ProjectsGrid projects={projects} />
