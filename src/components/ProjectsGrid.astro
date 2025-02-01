@@ -1,5 +1,7 @@
 ---
 import { Image } from "astro:assets";
+import { slugify } from '@/utils/slugify';
+
 /*
   Expects a prop `projects`, an array of objects from the 'projects' collection.
   Each project object contains:
@@ -18,6 +20,9 @@ interface Project {
 }
 
 const { projects }: { projects: Project[] } = Astro.props as { projects: Project[] };
+
+projects.sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime());
+
 ---
 
 <div class="grid gap-6 justify-center grid-cols-[repeat(auto-fit,minmax(10rem,12rem))]">
@@ -30,12 +35,12 @@ const { projects }: { projects: Project[] } = Astro.props as { projects: Project
       <a href={link} target={target} class="block">
         <div class="relative w-full aspect-[3/2]">
           <Image
-            src={fm.thumbnail}
+            src={`/src/images/projects/${project.slug}/${fm.thumbnail}`}
             alt={fm.title}
             width={384}
             height={256}
             class="object-cover rounded-md"
-			loading="lazy"
+            loading="lazy"
           />
         </div>
         <h3 class="mt-2 text-base font-semibold">{fm.title}</h3>
