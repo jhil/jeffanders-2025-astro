@@ -13,9 +13,9 @@ Expects a prop `teams`, an array of objects with:
 const { teams } = Astro.props;
 ---
 
-<section id="teams" class="px-16 py-8 overflow-hidden">
+<section id="teams" class="py-8 overflow-hidden border-b border-muted">
 	<ScrollArea className="flex overflow-x-auto">
-		<div class="flex gap-x-16">
+		<div class="flex gap-x-16 px-8">
 			{
 				teams.map(
 					(team: {
