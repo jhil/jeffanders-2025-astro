@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import { ScrollArea, ScrollBar } from "@/components/ui/scroll-area";
+
+/*
+Expects a prop `teams`, an array of objects with:
+- image: string (URL/path to the team image)
+- name: string (team name)
+- role: string (role)
+- year: string or number (year)
+*/
+const { teams } = Astro.props;
+---
+
+<section id="teams" class="px-4 py-8">
+	<ScrollArea className="whitespace-nowrap w-full flex overflow-x-auto">
+		<div class="flex gap-x-12">
+			{
+				teams.map(
+					(team: {
+						image: string;
+						name: string;
+						role: string;
+						url: string;
+					}) => (
+						<a
+							class="flex items-center gap-4 flex-shrink-0"
+							href={team.url}
+							target="_blank"
+						>
+							<Image
+								src={team.image}
+								alt={team.name}
+								width={32}
+								height={32}
+								class="rounded-sm"
+							/>
+							<div class="flex flex-col">
+								<span class="text-sm">{team.name}</span>
+								<span class="text-sm text-gray-600">{team.role}</span>
+							</div>
+						</a>
+					)
+				)
+			}
+		</div>
+	</ScrollArea>
+</section>
