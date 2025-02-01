@@ -1,17 +1,21 @@
 ---
 import { buttonVariants } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle.astro";
+import { Image } from "astro:assets";
 ---
 
 <header class="flex justify-between items-center px-16 py-8">
-	<div class="flex items-center space-x-4">
-		<img
+	<a href="/" class="flex items-center space-x-4 group">
+		<Image
 			src="/src/images/jeff-anders-photo.jpg"
 			alt="Jeff Anders avatar"
+			width={32}
+			height={32}
 			class="w-8 h-8 rounded-sm"
+			inferSize
 		/>
-		<h2 class="font-bold text-lg">Jeff Anders</h2>
-	</div>
+		<h1 class="font-medium group-hover:underline">Jeff Anders</h1>
+	</a>
 	<nav class="flex space-x-2">
 		<ul class="flex space-x-1">
 			<li>

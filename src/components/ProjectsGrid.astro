@@ -1,6 +1,5 @@
 ---
 import { Image } from "astro:assets";
-import { slugify } from "@/utils/slugify";
 
 /*
   Expects a prop `projects`, an array of objects from the 'projects' collection.
@@ -40,7 +39,7 @@ projects.sort(
 				const target = fm.external ? "_blank" : "_self";
 				return (
 					<div class="max-w-[12rem] mx-auto">
-						<a href={link} target={target} class="flex flex-col gap-y-2">
+						<a href={link} target={target} class="flex flex-col gap-y-3 group">
 							<Image
 								src={`/src/images/projects/${project.slug}/${fm.thumbnail}`}
 								alt={fm.title}
@@ -50,8 +49,12 @@ projects.sort(
 								loading="lazy"
 							/>
 							<div class="flex flex-col gap-y-1">
-								<h3 class="text-sm font-semibold ">{fm.title}</h3>
-								<p class="text-xs text-gray-600">{fm.brief}</p>
+								<h3 class="text-sm font-medium group-hover:underline">
+									{fm.title}
+								</h3>
+								<p class="text-xs text-gray-400 group-hover:text-gray-600">
+									{fm.brief}
+								</p>
 							</div>
 						</a>
 					</div>
