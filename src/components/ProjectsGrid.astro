@@ -27,9 +27,9 @@ projects.sort(
 );
 ---
 
-<section id="projects" class="px-8 py-8">
+<section id="projects">
 	<div
-		class="grid gap-16 justify-center grid-cols-[repeat(auto-fit,minmax(10rem,1fr))]"
+		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] border border-muted"
 	>
 		{
 			projects.map((project) => {
@@ -38,26 +38,28 @@ projects.sort(
 				const link = fm.external ? fm.external : `/projects/${project.slug}`;
 				const target = fm.external ? "_blank" : "_self";
 				return (
-					<div class="max-w-[12rem] mx-auto">
-						<a href={link} target={target} class="flex flex-col gap-y-3 group">
-							<Image
-								src={`/src/images/projects/${project.slug}/${fm.thumbnail}`}
-								alt={fm.title}
-								width={384}
-								height={256}
-								class="object-cover rounded-xs aspect-[3/2]"
-								loading="lazy"
-							/>
-							<div class="flex flex-col gap-y-1">
-								<h3 class="text-sm font-medium group-hover:underline">
-									{fm.title}
-								</h3>
-								<p class="text-xs text-gray-400 group-hover:text-gray-600">
-									{fm.brief}
-								</p>
-							</div>
-						</a>
-					</div>
+					<a
+						href={link}
+						target={target}
+						class="border border-muted p-8 flex flex-col gap-y-4 group"
+					>
+						<Image
+							src={`/src/images/projects/${project.slug}/${fm.thumbnail}`}
+							alt={fm.title}
+							width={384}
+							height={256}
+							class="object-cover rounded-xs aspect-[3/2]"
+							loading="lazy"
+						/>
+						<div class="flex flex-col gap-y-1">
+							<h3 class="text-sm font-medium group-hover:underline">
+								{fm.title}
+							</h3>
+							<p class="text-xs text-gray-400 group-hover:text-gray-600">
+								{fm.brief}
+							</p>
+						</div>
+					</a>
 				);
 			})
 		}
