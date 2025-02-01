@@ -5,7 +5,7 @@ import { Image } from "astro:assets";
 ---
 
 <header
-	class="flex justify-between items-center px-8 py-8 border-b border-muted"
+	class="flex justify-between items-center px-8 py-8 border-b border-muted bg-background w-full sticky top-0 z-50"
 >
 	<a href="/" class="flex items-center space-x-4 group">
 		<Image
@@ -28,7 +28,7 @@ import { Image } from "astro:assets";
 					>Projects</a
 				>
 			</li>
-			<li>
+			<!-- <li>
 				<a class={buttonVariants({ variant: "link" })} href="#talks">Talks</a>
 			</li>
 			<li>
@@ -38,7 +38,7 @@ import { Image } from "astro:assets";
 				<a class={buttonVariants({ variant: "link" })} href="#contact"
 					>Contact</a
 				>
-			</li>
+			</li> -->
 		</ul>
 		<ThemeToggle />
 	</nav>

@@ -29,7 +29,7 @@ projects.sort(
 
 <section id="projects">
 	<div
-		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(14rem,1fr))] border border-muted"
+		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]"
 	>
 		{
 			projects.map((project) => {
@@ -41,7 +41,7 @@ projects.sort(
 					<a
 						href={link}
 						target={target}
-						class="border border-muted p-8 flex flex-col gap-y-4 group"
+						class="outline outline-muted p-8 flex flex-col gap-y-4 group"
 					>
 						<Image
 							src={`/src/images/projects/${project.slug}/${fm.thumbnail}`}
