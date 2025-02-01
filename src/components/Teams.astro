@@ -8,13 +8,14 @@ Expects a prop `teams`, an array of objects with:
 - name: string (team name)
 - role: string (role)
 - year: string or number (year)
+- active: boolean (whether the team is active)
 */
 const { teams } = Astro.props;
 ---
 
-<section id="teams" class="px-4 py-8 overflow-hidden w-full">
+<section id="teams" class="px-16 py-8 overflow-hidden">
 	<ScrollArea className="flex overflow-x-auto">
-		<div class="flex gap-x-12">
+		<div class="flex gap-x-16">
 			{
 				teams.map(
 					(team: {
@@ -22,9 +23,10 @@ const { teams } = Astro.props;
 						name: string;
 						role: string;
 						url: string;
+						active: boolean;
 					}) => (
 						<a
-							class="flex items-center gap-4 flex-shrink-0"
+							class="flex items-center gap-4 flex-shrink-0 group"
 							href={team.url}
 							target="_blank"
 						>
@@ -33,11 +35,15 @@ const { teams } = Astro.props;
 								alt={team.name}
 								width={32}
 								height={32}
-								class="rounded-sm"
+								class={`rounded-xs ${team.active ? "" : "opacity-50 group-hover:opacity-100"}`}
 							/>
 							<div class="flex flex-col">
-								<span class="text-sm">{team.name}</span>
-								<span class="text-sm text-gray-600">{team.role}</span>
+								<span
+									class={`text-sm font-medium ${team.active ? "" : "text-gray-500"} group-hover:text-primary`}
+								>
+									{team.name}
+								</span>
+								<span class="text-xs text-gray-400">{team.role}</span>
 							</div>
 						</a>
 					)

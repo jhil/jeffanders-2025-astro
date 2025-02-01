@@ -28,9 +28,9 @@ projects.sort(
 );
 ---
 
-<section id="projects" class="px-4 py-8 w-full">
+<section id="projects" class="px-16 py-8">
 	<div
-		class="grid gap-6 justify-center grid-cols-[repeat(auto-fit,minmax(10rem,12rem))]"
+		class="grid gap-16 justify-center grid-cols-[repeat(auto-fit,minmax(10rem,1fr))]"
 	>
 		{
 			projects.map((project) => {
@@ -39,20 +39,22 @@ projects.sort(
 				const link = fm.external ? fm.external : `/projects/${project.slug}`;
 				const target = fm.external ? "_blank" : "_self";
 				return (
-					<a href={link} target={target} class="block">
-						<div class="relative w-full aspect-[3/2]">
+					<div class="max-w-[12rem] mx-auto">
+						<a href={link} target={target} class="flex flex-col gap-y-2">
 							<Image
 								src={`/src/images/projects/${project.slug}/${fm.thumbnail}`}
 								alt={fm.title}
 								width={384}
 								height={256}
-								class="object-cover rounded-md"
+								class="object-cover rounded-xs aspect-[3/2]"
 								loading="lazy"
 							/>
-						</div>
-						<h3 class="mt-2 text-base font-semibold">{fm.title}</h3>
-						<p class="mt-1 text-sm text-gray-600">{fm.brief}</p>
-					</a>
+							<div class="flex flex-col gap-y-1">
+								<h3 class="text-sm font-semibold ">{fm.title}</h3>
+								<p class="text-xs text-gray-600">{fm.brief}</p>
+							</div>
+						</a>
+					</div>
 				);
 			})
 		}

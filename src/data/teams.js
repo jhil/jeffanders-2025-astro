@@ -4,6 +4,7 @@ export const teams = [
 		name: "Ambrook",
 		role: "Co-Founder",
 		url: "https://ambrook.com?ref=jeffanders.co",
+		active: true,
 	},
 	{
 		image: "/src/images/teams/scale-icon.png",
@@ -67,6 +68,6 @@ export const teams = [
 		image: "/src/images/teams/umd-icon.png",
 		name: "U of Maryland",
 		role: "Alum",
-		url: "https://umd.edu"
+		url: "https://umd.edu",
 	},
 ];
