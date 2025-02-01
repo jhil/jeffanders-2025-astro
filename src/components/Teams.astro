@@ -13,41 +13,39 @@ const { teams } = Astro.props;
 ---
 
 <section id="teams" class="py-8 overflow-hidden border-b border-muted">
-	<div class="flex overflow-x-auto no-scrollbar">
-		<div class="flex gap-x-16 px-8">
-			{
-				teams.map(
-					(team: {
-						image: string;
-						name: string;
-						role: string;
-						url: string;
-						active: boolean;
-					}) => (
-						<a
-							class="flex items-center gap-4 flex-shrink-0 group"
-							href={team.url}
-							target="_blank"
-						>
-							<Image
-								src={team.image}
-								alt={team.name}
-								width={32}
-								height={32}
-								class={`rounded-xs ${team.active ? "" : "opacity-50 group-hover:opacity-100"}`}
-							/>
-							<div class="flex flex-col">
-								<span
-									class={`text-sm font-medium ${team.active ? "" : "text-gray-500"} group-hover:text-primary`}
-								>
-									{team.name}
-								</span>
-								<span class="text-xs text-gray-400">{team.role}</span>
-							</div>
-						</a>
-					)
+	<div class="flex overflow-x-auto no-scrollbar gap-x-12 px-8">
+		{
+			teams.map(
+				(team: {
+					image: string;
+					name: string;
+					role: string;
+					url: string;
+					active: boolean;
+				}) => (
+					<a
+						class="flex items-center gap-4 flex-shrink-0 group"
+						href={team.url}
+						target="_blank"
+					>
+						<Image
+							src={team.image}
+							alt={team.name}
+							width={32}
+							height={32}
+							class={`rounded-xs ${team.active ? "" : "opacity-50 group-hover:opacity-100"}`}
+						/>
+						<div class="flex flex-col">
+							<span
+								class={`text-sm font-medium ${team.active ? "" : "text-gray-500"} group-hover:text-primary`}
+							>
+								{team.name}
+							</span>
+							<span class="text-xs text-gray-400">{team.role}</span>
+						</div>
+					</a>
 				)
-			}
-		</div>
+			)
+		}
 	</div>
 </section>
