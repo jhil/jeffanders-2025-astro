@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import "@/styles/global.css";
+
+export async function getStaticPaths() {
+	const projects = await getCollection("projects");
+	return projects.map(
+		(project: { slug: string; render: () => Promise<{ Content: any }> }) => ({
+			params: { slug: project.slug },
+			props: { project },
+		})
+	);
+}
+
+interface Project {
+	slug: string;
+	render: () => Promise<{ Content: any }>;
+	data: {
+		title: string;
+		description?: string;
+		ogImage?: URL;
+	};
+}
+
+const { project } = Astro.props as { project: Project };
+const { Content } = await project.render();
+---
+
+<BaseLayout
+	title={project.data.title}
+	description={project.data.description}
+	ogImage={project.data.ogImage}
+>
+	<article class="prose flex flex-col mx-auto px-16 py-8 gap-16">
+		<h1 class="text-6xl font-medium">{project.data.title}</h1>
+		<Content />
+	</article>
+</BaseLayout>
