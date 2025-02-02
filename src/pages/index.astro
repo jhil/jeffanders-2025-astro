@@ -2,10 +2,12 @@
 import BaseLayout from "@/layouts/BaseLayout.astro";
 import Teams from "../components/Teams.astro";
 import ProjectsGrid from "../components/ProjectsGrid.astro";
+import ListsGrid from "../components/ListsGrid.astro";
 import { teams } from "../data/teams";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
+const lists = await getCollection("lists");
 ---
 
 <BaseLayout
@@ -14,4 +16,5 @@ const projects = await getCollection("projects");
 >
 	<Teams teams={teams} />
 	<ProjectsGrid projects={projects} />
+	<ListsGrid lists={lists} />
 </BaseLayout>
