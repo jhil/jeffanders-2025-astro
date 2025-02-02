@@ -1,9 +1,0 @@
----
-import ProjectsGrid from "../../components/ProjectsGrid.astro";
-import { getCollection } from "astro:content";
-
-// Load all MDX pages from the "projects" collection
-const projects = await getCollection("projects");
----
-
-<ProjectsGrid projects={projects} />

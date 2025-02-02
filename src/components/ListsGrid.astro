@@ -1,41 +1,44 @@
 ---
 import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import { mdiPodcast } from "@mdi/js";
 
 /*
-  Expects a prop `projects`, an array of objects from the 'projects' collection.
-  Each project object contains:
+  Expects a prop `lists`, an array of objects from the 'lists' collection.
+  Each list object contains:
     - data: an object with keys: title, brief, date, cover, external (optional)
     - slug: string (generated from the MDX file name)
 */
-interface Project {
+interface List {
 	data: {
 		title: string;
 		brief: string;
 		date: string;
 		cover: string;
 		external?: string;
+		icon: string;
 	};
 	slug: string;
 }
 
-const { projects }: { projects: Project[] } = Astro.props as {
-	projects: Project[];
+const { lists }: { lists: List[] } = Astro.props as {
+	lists: List[];
 };
 
-projects.sort(
+lists.sort(
 	(a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 ---
 
-<section id="projects">
+<section id="lists">
 	<div
 		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(15rem,1fr))]"
 	>
 		{
-			projects.map((project) => {
-				const fm = project.data;
-				// If external URL is provided, use that; otherwise, link to the internal project page.
-				const link = fm.external ? fm.external : `/projects/${project.slug}`;
+			lists.map((list) => {
+				const fm = list.data;
+				// If external URL is provided, use that; otherwise, link to the internal list page.
+				const link = fm.external ? fm.external : `/lists/${list.slug}`;
 				const target = fm.external ? "_blank" : "_self";
 				return (
 					<a
@@ -43,13 +46,10 @@ projects.sort(
 						target={target}
 						class="outline outline-muted p-8 flex flex-col gap-y-4 group"
 					>
-						<Image
-							src={`/src/images/projects/${project.slug}/${fm.cover}`}
-							alt={fm.title}
-							width={384}
-							height={256}
-							class="object-cover rounded-xs aspect-[3/2]"
-							loading="lazy"
+						<Icon
+							icon={`mdi${fm.icon}`}
+							size={16}
+							class="text-gray-400 group-hover:text-gray-600"
 						/>
 						<div class="flex flex-col gap-y-1">
 							<h3 class="text-sm font-medium group-hover:underline">

@@ -1,0 +1,39 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import "@/styles/global.css";
+
+export async function getStaticPaths() {
+	const lists = await getCollection("lists");
+	return lists.map(
+		(list: { slug: string; render: () => Promise<{ Content: any }> }) => ({
+			params: { slug: list.slug },
+			props: { list },
+		})
+	);
+}
+
+interface List {
+	slug: string;
+	render: () => Promise<{ Content: any }>;
+	data: {
+		title: string;
+		description?: string;
+		ogImage?: URL;
+	};
+}
+
+const { list } = Astro.props as { list: List };
+const { Content } = await list.render();
+---
+
+<BaseLayout
+	title={list.data.title}
+	description={list.data.description}
+	ogImage={list.data.ogImage}
+>
+	<article class="prose flex flex-col mx-auto px-8 py-8 gap-16">
+		<h1 class="text-6xl font-medium">{list.data.title}</h1>
+		<Content />
+	</article>
+</BaseLayout>
