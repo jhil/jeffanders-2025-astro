@@ -10,8 +10,6 @@ import netlify from "@astrojs/netlify";
 
 import robotsTxt from "astro-robots-txt";
 
-import playformCompress from "@playform/compress";
-
 // https://astro.build/config
 export default defineConfig({
 	site: process.env.CI ? "https://jeffanders.co" : "http://localhost:4321",
@@ -21,7 +19,6 @@ export default defineConfig({
 		mdx(),
 		icon(),
 		robotsTxt(),
-		playformCompress(),
 		(await import("@playform/compress")).default(),
 	],
 
