@@ -21,5 +21,7 @@ export default defineConfig({
 	},
 
 	output: "static",
-	adapter: netlify(),
+	adapter: netlify({
+		imageCDN: false,
+	}),
 });
