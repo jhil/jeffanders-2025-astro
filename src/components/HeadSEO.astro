@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from "astro:transitions";
 import "@/styles/global.css";
 import "@/styles/fonts.css";
 
@@ -43,3 +44,5 @@ const { title, description, ogImage } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ogImage} />
+
+<ClientRouter />
