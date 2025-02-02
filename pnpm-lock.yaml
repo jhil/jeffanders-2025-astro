@@ -14,6 +14,9 @@ importers:
       '@astrojs/react':
         specifier: ^4.2.0
         version: 4.2.0(@types/node@22.13.0)(@types/react-dom@19.0.3(@types/react@19.0.8))(@types/react@19.0.8)(jiti@2.4.2)(lightningcss@1.29.1)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
+      '@fontsource/libre-franklin':
+        specifier: ^5.1.2
+        version: 5.1.2
       '@mdi/js':
         specifier: ^7.4.47
         version: 7.4.47
@@ -398,6 +401,9 @@ packages:
     engines: {node: '>=18'}
     cpu: [x64]
     os: [win32]
+
+  '@fontsource/libre-franklin@5.1.2':
+    resolution: {integrity: sha512-DhhxvdI2epVifQllvFmYV3cmg671vknq9UAnEclpOgS2da0m/otiP0ZbXQYdYa/374Jn53Y+6E45t2x7lBTvFg==}
 
   '@img/sharp-darwin-arm64@0.33.5':
     resolution: {integrity: sha512-UT4p+iz/2H4twwAoLCqfA9UH5pI6DggwKEGuaPy7nCVQ8ZsiY5PIcrRvD1DzuY3qYL07NtIQcWnBSY/heikIFQ==}
@@ -2563,6 +2569,8 @@ snapshots:
 
   '@esbuild/win32-x64@0.24.2':
     optional: true
+
+  '@fontsource/libre-franklin@5.1.2': {}
 
   '@img/sharp-darwin-arm64@0.33.5':
     optionalDependencies:
