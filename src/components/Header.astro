@@ -4,8 +4,10 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
 import { Image } from "astro:assets";
 ---
 
-<header class="flex justify-between items-center px-16 py-8">
-	<div class="flex items-center space-x-4">
+<header
+	class="flex justify-between items-center px-8 py-8 bg-background w-full sticky top-0 z-50 border border-muted"
+>
+	<a href="/" class="flex items-center space-x-4 group">
 		<Image
 			src="/src/images/jeff-anders-photo.jpg"
 			alt="Jeff Anders avatar"
@@ -13,8 +15,8 @@ import { Image } from "astro:assets";
 			width={32}
 			height={32}
 		/>
-		<h2 class="font-bold text-lg">Jeff Anders</h2>
-	</div>
+		<h1 class="font-medium group-hover:underline">Jeff Anders</h1>
+	</a>
 	<nav class="flex space-x-2">
 		<ul class="flex space-x-1">
 			<li>

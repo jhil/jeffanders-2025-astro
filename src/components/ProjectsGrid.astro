@@ -1,12 +1,5 @@
 ---
 import { Image } from "astro:assets";
-
-/*
-  Expects a prop `projects`, an array of objects from the 'projects' collection.
-  Each project object contains:
-    - data: an object with keys: title, brief, date, cover, external (optional)
-    - slug: string (generated from the MDX file name)
-*/
 interface Project {
 	data: {
 		title: string;
