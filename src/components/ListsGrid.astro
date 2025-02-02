@@ -1,4 +1,6 @@
 ---
+import { Icon } from "astro-icon/components";
+
 /*
   Expects a prop `lists`, an array of objects from the 'lists' collection.
   Each list object contains:
@@ -8,9 +10,8 @@
 interface List {
 	data: {
 		title: string;
-		brief: string;
 		date: string;
-		cover: string;
+		icon?: string;
 		external?: string;
 	};
 	slug: string;
@@ -37,16 +38,12 @@ lists.sort((a, b) => a.data.title.localeCompare(b.data.title));
 					<a
 						href={link}
 						target={target}
-						class="outline outline-muted p-8 flex gap-y-4 group"
+						class="outline outline-muted p-8 flex gap-4 group justify-center"
 					>
-						<div class="flex flex-col gap-y-1">
-							<h3 class="text-sm font-medium group-hover:underline">
-								{fm.title}
-							</h3>
-							<p class="text-xs text-muted-foreground/90 group-hover:text-muted-foreground">
-								{fm.brief}
-							</p>
-						</div>
+						{fm.icon && <Icon name={`mdi:${fm.icon}`} class="h-5 w-5" />}
+						<h3 class="text-sm font-medium group-hover:underline">
+							{fm.title}
+						</h3>
 					</a>
 				);
 			})

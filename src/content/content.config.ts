@@ -31,7 +31,7 @@ const projects = defineCollection({
 const lists = defineCollection({
 	schema: z.object({
 		...commonSchema,
-		icon: z.string(),
+		icon: z.string().optional(),
 	}),
 });
 
