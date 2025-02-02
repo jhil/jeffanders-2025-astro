@@ -12,19 +12,12 @@ import robotsTxt from "astro-robots-txt";
 
 // https://astro.build/config
 export default defineConfig({
-	site: process.env.CI ? "https://jeffanders.co" : "http://localhost:4321",
-
-	integrations: [
-		react(),
-		mdx(),
-		icon(),
-		robotsTxt(),
-		// (await import("@playform/compress")).default(),
-	],
+	integrations: [react(), mdx(), icon(), robotsTxt()],
 
 	vite: {
 		plugins: [tailwindcss()],
 	},
 
+	output: "static",
 	adapter: netlify(),
 });
