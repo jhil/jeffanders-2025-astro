@@ -7,12 +7,12 @@ icon: "podcast"
 import { Image } from "astro:assets";
 import { podcasts } from "../../data/podcasts";
 
-<div class="grid justify-center grid-cols-[repeat(auto-fit,minmax(10rem,1fr))]">
+<div class="grid justify-center grid-cols-[repeat(auto-fit,minmax(12rem,1fr))]">
 	{podcasts.map((podcast) => (
 		<a
 			href={podcast.url}
 			target="_blank"
-			class="outline outline-muted p-4 flex flex-col gap-y-4 group"
+			class="outline outline-muted p-8 flex flex-col gap-y-4 group"
 		>
 			<Image
 				src={`/src/images/lists/podcasts/${podcast.cover}`}
@@ -24,11 +24,7 @@ import { podcasts } from "../../data/podcasts";
 				decoding="async"
 				sizes="(max-width: 640px) 150px, 300px"
 			/>
-
-    		<h3 class="text-sm font-medium group-hover:underline">
-    			{podcast.title}
-    		</h3>
-    	</a>
-    ))}
-
+			<h3 class="text-sm font-medium">{podcast.title}</h3>
+		</a>
+	))}
 </div>
