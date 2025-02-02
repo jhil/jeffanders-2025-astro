@@ -19,7 +19,7 @@ export default defineConfig({
 		mdx(),
 		icon(),
 		robotsTxt(),
-		(await import("@playform/compress")).default(),
+		// (await import("@playform/compress")).default(),
 	],
 
 	vite: {

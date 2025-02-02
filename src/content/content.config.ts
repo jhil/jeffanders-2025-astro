@@ -1,5 +1,4 @@
 import { defineCollection, z } from "astro:content";
-import { parseCsvFile } from "../utils/csvParser";
 
 const commonSchema = {
 	title: z.string(),
