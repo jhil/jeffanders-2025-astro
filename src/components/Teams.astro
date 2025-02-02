@@ -12,8 +12,8 @@ Expects a prop `teams`, an array of objects with:
 const { teams } = Astro.props;
 ---
 
-<section id="teams" class="py-8 overflow-hidden border-b border-muted">
-	<div class="flex overflow-x-auto no-scrollbar gap-x-12 px-8">
+<section id="teams" class="overflow-hidden outline-b outline-muted">
+	<div class="flex overflow-x-auto no-scrollbar gap-x-12 p-8">
 		{
 			teams.map(
 				(team: {
@@ -37,11 +37,13 @@ const { teams } = Astro.props;
 						/>
 						<div class="flex flex-col">
 							<h3
-								class={`text-sm font-medium ${team.active ? "" : "text-gray-500"} group-hover:text-primary`}
+								class={`text-sm font-medium ${team.active ? "" : "text-muted-foreground"} group-hover:text-primary group-hover:underline`}
 							>
 								{team.name}
 							</h3>
-							<span class="text-xs text-gray-400">{team.role}</span>
+							<span class="text-xs text-muted-foreground/75 group-hover:text-muted-foreground">
+								{team.role}
+							</span>
 						</div>
 					</a>
 				)
