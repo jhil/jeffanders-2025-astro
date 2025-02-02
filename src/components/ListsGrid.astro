@@ -1,8 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import Icon from "./Icon.astro";
-import { mdiPodcast } from "@mdi/js";
-
 /*
   Expects a prop `lists`, an array of objects from the 'lists' collection.
   Each list object contains:
@@ -25,9 +21,7 @@ const { lists }: { lists: List[] } = Astro.props as {
 	lists: List[];
 };
 
-lists.sort(
-	(a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
-);
+lists.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
 <section id="lists">
@@ -44,13 +38,9 @@ lists.sort(
 					<a
 						href={link}
 						target={target}
-						class="outline outline-muted p-8 flex flex-col gap-y-4 group"
+						class="outline outline-muted p-8 flex gap-y-4 group"
 					>
-						<Icon
-							icon={`mdi${fm.icon}`}
-							size={16}
-							class="text-gray-400 group-hover:text-gray-600"
-						/>
+						{/* <Icon icon={`mdi-${fm.icon}`} size={24} /> */}
 						<div class="flex flex-col gap-y-1">
 							<h3 class="text-sm font-medium group-hover:underline">
 								{fm.title}
