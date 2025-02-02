@@ -8,13 +8,13 @@ import icon from "astro-icon";
 
 import netlify from "@astrojs/netlify";
 
+import robotsTxt from "astro-robots-txt";
+
 // https://astro.build/config
 export default defineConfig({
-	site: process.env.CI
-		? "https://astro-shadcn-ui-template.vercel.app"
-		: "http://localhost:4321",
+	"http://localhost:4321",
 
-	integrations: [react(), mdx(), icon()],
+	integrations: [react(), mdx(), icon(), robotsTxt()],
 	vite: {
 		plugins: [tailwindcss()],
 	},
