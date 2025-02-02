@@ -9,7 +9,7 @@ const commonSchema = {
 // Schema for podcast entries
 const podcastSchema = z.object({
 	title: z.string(),
-	file: z.string(),
+	cover: z.string(),
 	url: z.string().url(),
 	category: z.string(),
 });
