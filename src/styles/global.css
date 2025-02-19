@@ -180,7 +180,7 @@
 	}
 
 	.animated-underline::after {
-		@apply content-[''] bg-primary absolute h-[1px] w-0 left-0 -bottom-[1px] duration-300;
+		@apply content-[''] bg-muted-foreground absolute h-[1px] w-0 left-0 -bottom-[1px] duration-200;
 	}
 
 	.animated-underline:hover::after {
