@@ -20,25 +20,46 @@ import { Image } from "astro:assets";
 	<nav class="flex space-x-2">
 		<ul class="flex space-x-1">
 			<li>
-				<a class={buttonVariants({ variant: "link" })} href="/#teams">Teams</a>
-			</li>
-			<li>
-				<a class={buttonVariants({ variant: "link" })} href="/#projects"
-					>Projects</a
+				<a
+					class={`${buttonVariants({ variant: "link" })} nav-link`}
+					href="/#teams"
+					data-section="teams">Teams</a
 				>
 			</li>
 			<li>
-				<a class={buttonVariants({ variant: "link" })} href="/#talks">Talks</a>
+				<a
+					class={`${buttonVariants({ variant: "link" })} nav-link`}
+					href="/#projects"
+					data-section="projects">Projects</a
+				>
 			</li>
 			<li>
-				<a class={buttonVariants({ variant: "link" })} href="/#lists">Lists</a>
+				<a
+					class={`${buttonVariants({ variant: "link" })} nav-link`}
+					href="/#talks"
+					data-section="talks">Talks</a
+				>
 			</li>
 			<li>
-				<a class={buttonVariants({ variant: "link" })} href="/#contact"
-					>Contact</a
+				<a
+					class={`${buttonVariants({ variant: "link" })} nav-link`}
+					href="/#lists"
+					data-section="lists">Lists</a
+				>
+			</li>
+			<li>
+				<a
+					class={`${buttonVariants({ variant: "link" })} nav-link`}
+					href="/#contact"
+					data-section="contact">Contact</a
 				>
 			</li>
 		</ul>
 		<ThemeToggle />
 	</nav>
 </header>
+
+<script>
+	import { initActiveSection } from "@/scripts/activeSection";
+	initActiveSection();
+</script>
