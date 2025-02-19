@@ -38,9 +38,11 @@ lists.sort((a, b) => a.data.title.localeCompare(b.data.title));
 					<a
 						href={link}
 						target={target}
-						class="outline outline-muted p-8 flex gap-4 group justify-center"
+						class="outline outline-muted p-8 flex gap-4 group  items-center"
 					>
-						{fm.icon && <Icon name={`mdi:${fm.icon}`} class="h-5 w-5" />}
+						{fm.icon && (
+							<Icon name={`mdi:${fm.icon}`} class="h-5 w-5 flex-shrink-0" />
+						)}
 						<h3 class="text-sm font-medium">
 							<span class="animated-underline group-hover:after:w-full">
 								{fm.title}
