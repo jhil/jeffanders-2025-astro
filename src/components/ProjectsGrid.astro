@@ -17,7 +17,8 @@ const { projects }: { projects: Project[] } = Astro.props as {
 	projects: Project[];
 };
 
-projects.sort(
+// Sort projects by date directly in the component script
+const sortedProjects = [...projects].sort(
 	(a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
 ---
@@ -27,7 +28,7 @@ projects.sort(
 		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(14rem,1fr))]"
 	>
 		{
-			projects.map((project) => {
+			sortedProjects.map((project) => {
 				const fm = project.data;
 				const link = fm.external ? fm.external : `/projects/${project.slug}`;
 

@@ -63,6 +63,7 @@ const imageSize = dense ? 48 : (image?.width ?? 0);
 				height={dense ? 48 : image.height}
 				class={`object-cover rounded-xs flex-shrink-0 ${image.class || ""}`}
 				loading="lazy"
+				decoding="async"
 			/>
 		)
 	}

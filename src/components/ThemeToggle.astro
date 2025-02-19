@@ -14,39 +14,41 @@ import { Button } from "@/components/ui/button";
 </Button>
 
 <script is:inline>
+	// Use a single source of truth for theme
+	const THEME_KEY = "theme";
+	const DARK_CLASS = "dark";
+
 	const getThemePreference = () => {
-		if (typeof localStorage !== "undefined" && localStorage.getItem("theme")) {
-			return localStorage.getItem("theme");
-		}
-		return window.matchMedia("(prefers-color-scheme: dark)").matches
-			? "dark"
-			: "light";
+		// Cache media query result
+		const darkModePreference = window.matchMedia(
+			"(prefers-color-scheme: dark)"
+		);
+		return (
+			localStorage.getItem(THEME_KEY) ||
+			(darkModePreference.matches ? "dark" : "light")
+		);
 	};
 
-	// Initial theme setup
+	// Optimize theme application by avoiding multiple DOM operations
 	const applyTheme = () => {
 		const theme = getThemePreference();
-		document.documentElement.classList[theme === "dark" ? "add" : "remove"](
-			"dark"
-		);
+		const isDark = theme === "dark";
+		document.documentElement.classList.toggle(DARK_CLASS, isDark);
 	};
 
 	// Apply theme immediately
 	applyTheme();
 
-	// Handle theme changes
-	document.addEventListener("astro:after-swap", applyTheme);
+	// Use passive event listener for better scroll performance
+	document.addEventListener("astro:after-swap", applyTheme, { passive: true });
 
-	// Theme toggle logic
+	// Optimize theme toggle handler
 	document.addEventListener("astro:page-load", () => {
 		const themeToggle = document.getElementById("themeToggle");
 		if (themeToggle) {
 			themeToggle.addEventListener("click", () => {
-				document.documentElement.classList.toggle("dark");
-				localStorage.setItem(
-					"theme",
-					document.documentElement.classList.contains("dark") ? "dark" : "light"
-				);
+				const isDark = document.documentElement.classList.toggle(DARK_CLASS);
+				localStorage.setItem(THEME_KEY, isDark ? "dark" : "light");
 			});
 		}
 	});
