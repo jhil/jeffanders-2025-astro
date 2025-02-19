@@ -167,9 +167,11 @@
 
 	body {
 		@apply bg-background text-foreground;
-		font-family: "Libre Franklin", sans-serif;
+		font-family: "Libre Franklin", -apple-system, BlinkMacSystemFont, sans-serif;
 		font-feature-settings: "liga" 1, "rlig" 1, "calt" 1, "case" 1;
 		font-synthesis-weight: none;
+		font-display: swap;
+
 		text-rendering: optimizeLegibility;
 	}
 }
