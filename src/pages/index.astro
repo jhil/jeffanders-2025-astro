@@ -3,12 +3,14 @@ import BaseLayout from "@/layouts/BaseLayout.astro";
 import Teams from "../components/Teams.astro";
 import ProjectsGrid from "../components/ProjectsGrid.astro";
 import ListsGrid from "../components/ListsGrid.astro";
+import TalksGrid from "../components/TalksGrid.astro";
 import Contact from "../components/Contact.astro";
 import { teams } from "../data/teams";
 import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
 const lists = await getCollection("lists");
+const talks = await getCollection("talks");
 ---
 
 <BaseLayout
@@ -17,6 +19,7 @@ const lists = await getCollection("lists");
 >
 	<Teams teams={teams} />
 	<ProjectsGrid projects={projects} />
+	<TalksGrid talks={talks} />
 	<ListsGrid lists={lists} />
 	<Contact />
 </BaseLayout>

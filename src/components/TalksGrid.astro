@@ -1,0 +1,56 @@
+---
+import Tile from "./Tile.astro";
+
+interface Props {
+	talks: Talk[];
+}
+
+interface Talk {
+	data: {
+		title: string;
+		brief: string;
+		date: string;
+		cover: string;
+		external?: string;
+		color?: string;
+	};
+	slug: string;
+}
+
+const { talks } = Astro.props as Props;
+
+// Sort talks by date in descending order
+const sortedTalks = [...talks].sort(
+	(a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+---
+
+<section id="talks" class="outline outline-muted">
+	<div
+		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(28rem,1fr))]"
+	>
+		{
+			sortedTalks.map((talk) => {
+				const fm = talk.data;
+				const link = fm.external || `/talks/${talk.slug}`;
+
+				return (
+					<Tile
+						href={link}
+						target={fm.external ? "_blank" : undefined}
+						image={{
+							src: `/src/images/talks/${fm.cover}`,
+							alt: fm.title,
+							width: 48,
+							height: 48,
+							class: "object-cover w-12 h-12",
+						}}
+						title={fm.title}
+						label={fm.brief}
+						dense
+					/>
+				);
+			})
+		}
+	</div>
+</section>
