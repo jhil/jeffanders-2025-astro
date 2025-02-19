@@ -2,6 +2,14 @@
 import { buttonVariants } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import { Image } from "astro:assets";
+
+const navItems = [
+	{ label: "Teams", href: "/#teams" },
+	{ label: "Projects", href: "/#projects" },
+	{ label: "Talks", href: "/#talks" },
+	{ label: "Lists", href: "/#lists" },
+	{ label: "Contact", href: "/#contact" },
+] as const;
 ---
 
 <header
@@ -19,51 +27,19 @@ import { Image } from "astro:assets";
 	</a>
 	<nav class="flex space-x-2">
 		<ul class="flex space-x-1">
-			<li>
-				<a
-					class={`${buttonVariants({ variant: "link" })} nav-link`}
-					href="/#teams"
-					data-section="teams"
-				>
-					<span class="animated-underline">Teams</span>
-				</a>
-			</li>
-			<li>
-				<a
-					class={`${buttonVariants({ variant: "link" })} nav-link`}
-					href="/#projects"
-					data-section="projects"
-				>
-					<span class="animated-underline">Projects</span>
-				</a>
-			</li>
-			<li>
-				<a
-					class={`${buttonVariants({ variant: "link" })} nav-link`}
-					href="/#talks"
-					data-section="talks"
-				>
-					<span class="animated-underline">Talks</span>
-				</a>
-			</li>
-			<li>
-				<a
-					class={`${buttonVariants({ variant: "link" })} nav-link`}
-					href="/#lists"
-					data-section="lists"
-				>
-					<span class="animated-underline">Lists</span>
-				</a>
-			</li>
-			<li>
-				<a
-					class={`${buttonVariants({ variant: "link" })} nav-link`}
-					href="/#contact"
-					data-section="contact"
-				>
-					<span class="animated-underline">Contact</span>
-				</a>
-			</li>
+			{
+				navItems.map(({ href, label }) => (
+					<li>
+						<a
+							class={`${buttonVariants({ variant: "link" })} nav-link`}
+							href={href}
+							data-section={href.replace("/#", "")}
+						>
+							<span class="animated-underline">{label}</span>
+						</a>
+					</li>
+				))
+			}
 		</ul>
 		<ThemeToggle />
 	</nav>
