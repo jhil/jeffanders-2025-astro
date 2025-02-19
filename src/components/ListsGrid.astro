@@ -37,14 +37,7 @@ lists.sort((a, b) => a.data.title.localeCompare(b.data.title));
 					<Tile
 						href={link}
 						target={fm.external ? "_blank" : undefined}
-						icon={
-							fm.icon
-								? {
-										name: `lucide:${fm.icon}`,
-										class: "flex-shrink-0",
-									}
-								: undefined
-						}
+						icon={fm.icon ? { name: `lucide:${fm.icon}` } : undefined}
 						title={fm.title}
 						dense
 					/>

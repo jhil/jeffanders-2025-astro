@@ -32,19 +32,23 @@ const imageSize = dense ? 48 : (image?.width ?? 0);
 <a
 	href={href}
 	target={target}
-	class="outline outline-muted p-8 flex gap-4 group"
 	class:list={[
-		{ "flex-col": !dense && imageSize >= 100 },
-		{ "items-center": dense || !image || imageSize < 100 },
+		"outline outline-muted p-8 flex gap-4 group",
+		{
+			"flex-col": !dense && imageSize >= 100,
+			"items-center": dense || !image || imageSize < 100,
+		},
 	]}
 >
 	{
 		icon && (
 			<Icon
 				name={icon.name}
-				class={`h-5 w-5 flex-shrink-0 ${icon.class || ""} ${
-					icon.invertInDark ? "dark:invert" : ""
-				}`}
+				class:list={[
+					"h-5 w-5 flex-shrink-0",
+					icon.class,
+					{ "dark:invert": icon.invertInDark },
+				]}
 				style={icon.color ? `color: ${icon.color}` : undefined}
 			/>
 		)
