@@ -31,11 +31,11 @@ const navItems = [
 				navItems.map(({ href, label }) => (
 					<li>
 						<a
-							class={`${buttonVariants({ variant: "link" })} nav-link`}
+							class={`${buttonVariants({ variant: "link" })} nav-link `}
 							href={href}
 							data-section={href.replace("/#", "")}
 						>
-							<span class="animated-underline">{label}</span>
+							<span class="animated-underline font-medium">{label}</span>
 						</a>
 					</li>
 				))
