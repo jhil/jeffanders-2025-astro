@@ -21,9 +21,19 @@ interface Props {
 	title: string;
 	label?: string;
 	dense?: boolean;
+	color?: string;
 }
 
-const { href, target, icon, image, title, label, dense = false } = Astro.props;
+const {
+	href,
+	target,
+	icon,
+	image,
+	title,
+	label,
+	dense = false,
+	color = "#FFFF00",
+} = Astro.props;
 
 // For dense layout, image dimensions should be 48x48 (3rem)
 const imageSize = dense ? 48 : (image?.width ?? 0);
@@ -33,13 +43,41 @@ const imageSize = dense ? 48 : (image?.width ?? 0);
 	href={href}
 	target={target}
 	class:list={[
-		"outline outline-muted p-8 flex gap-4 group",
+		"outline outline-muted p-8 flex gap-4 group gradient-cursor",
 		{
 			"flex-col": !dense && imageSize >= 100,
 			"items-center": dense || !image || imageSize < 100,
 		},
 	]}
+	style={`--cursor-color: ${color}15`}
 >
+	<script>
+		function handleMouseMove(e: Event) {
+			const event = e as MouseEvent;
+			const tile = event.currentTarget as HTMLElement;
+			const rect = tile.getBoundingClientRect();
+			const x = event.clientX - rect.left;
+			const y = event.clientY - rect.top;
+
+			tile.style.setProperty("--x", `${x}px`);
+			tile.style.setProperty("--y", `${y}px`);
+			tile.classList.add("active");
+		}
+
+		function handleMouseLeave(e: Event) {
+			const tile = e.currentTarget as HTMLElement;
+			tile.classList.remove("active");
+			tile.style.removeProperty("--x");
+			tile.style.removeProperty("--y");
+		}
+
+		// Add event listeners to all tiles
+		document.querySelectorAll(".gradient-cursor").forEach((tile) => {
+			tile.addEventListener("mousemove", handleMouseMove as EventListener);
+			tile.addEventListener("mouseleave", handleMouseLeave as EventListener);
+		});
+	</script>
+
 	{
 		icon && (
 			<Icon

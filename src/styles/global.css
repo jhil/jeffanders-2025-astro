@@ -193,4 +193,27 @@
 	.animated-underline.active::after {
 		@apply w-full;
 	}
+
+	.gradient-cursor {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.gradient-cursor::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background: radial-gradient(
+			circle at var(--x, 50%) var(--y, 50%),
+			var(--cursor-color, hsla(60, 100%, 50%, 0.15)) 0%,
+			transparent 100%
+		);
+		opacity: 0;
+		transition: opacity 0.2s;
+		pointer-events: none;
+	}
+
+	.gradient-cursor.active::before {
+		opacity: 1;
+	}
 }
