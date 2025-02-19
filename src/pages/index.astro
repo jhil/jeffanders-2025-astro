@@ -5,6 +5,7 @@ import ProjectsGrid from "../components/ProjectsGrid.astro";
 import ListsGrid from "../components/ListsGrid.astro";
 import TalksGrid from "../components/TalksGrid.astro";
 import Contact from "../components/Contact.astro";
+import Footer from "../components/Footer.astro";
 import { teams } from "../data/teams";
 import { getCollection } from "astro:content";
 
@@ -22,4 +23,5 @@ const talks = await getCollection("talks");
 	<TalksGrid talks={talks} />
 	<ListsGrid lists={lists} />
 	<Contact />
+	<Footer />
 </BaseLayout>

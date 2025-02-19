@@ -1,0 +1,51 @@
+---
+const versions = [
+	{ label: "v.2025", value: "#" },
+	{ label: "v.2022", value: "https://jeffanders-2022.netlify.com/" },
+	{ label: "v.2021", value: "https://jeffanders-2021.netlify.com/" },
+	{
+		label: "v.2018",
+		value: "https://web.archive.org/web/20201219190027/http://jhil.co/",
+	},
+	{
+		label: "v.2017",
+		value: "https://web.archive.org/web/20171025012346/http://jhil.co/",
+	},
+	{
+		label: "v.2016",
+		value: "https://web.archive.org/web/20161211223333/http://jhil.co/",
+	},
+	{
+		label: "v.2015",
+		value: "https://web.archive.org/web/20150801131359/http://jhil.co/",
+	},
+	{ label: "v.2014", value: "https://jhilco-2014.netlify.com/" },
+	{ label: "v.2013", value: "https://jhilco-2013.netlify.com/" },
+	{
+		label: "v.2012",
+		value:
+			"https://web.archive.org/web/20140517135430/http://jhilmediadesign.com/",
+	},
+	{
+		label: "v.2011",
+		value:
+			"https://web.archive.org/web/20120712042431/http://jhilmediadesign.com/",
+	},
+];
+---
+
+<section class="outline outline-muted">
+	<footer class="py-16 px-8 flex justify-between pt-96">
+		<select
+			class="bg-background rounded-md p-2 text-sm text-muted-foreground"
+			onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);"
+		>
+			{
+				versions.map((version) => (
+					<option value={version.value}>{version.label}</option>
+				))
+			}
+		</select>
+		<p class="text-sm text-muted-foreground">The Footer</p>
+	</footer>
+</section>
