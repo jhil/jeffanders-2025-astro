@@ -34,14 +34,16 @@ const lists = defineCollection({
 		...commonSchema,
 		icon: z.string().optional(),
 		external: z.string().url().optional(),
+		link: z.string().url().optional(),
+		color: z.string().optional(),
 	}),
 });
 
 const talks = defineCollection({
 	schema: z.object({
 		...commonSchema,
-		brief: z.string(),
 		title: z.string(),
+		brief: z.string(),
 		cover: z.string(),
 		external: z.string().url(),
 		color: z.string().optional(),
@@ -49,4 +51,5 @@ const talks = defineCollection({
 	}),
 });
 
+// Export all collections
 export const collections = { projects, lists, podcasts, talks };
