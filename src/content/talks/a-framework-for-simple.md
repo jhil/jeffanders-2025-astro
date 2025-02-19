@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "A Framework For Simple"
 title: "UCB Innovative Design: RGB"

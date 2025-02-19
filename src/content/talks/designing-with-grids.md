@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "Designing With Grids"
 title: "Terrapin Hackers Hacktorial"

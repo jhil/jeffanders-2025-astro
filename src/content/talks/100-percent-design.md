@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "How to go from designer to manager"
 title: "100% Design by jam.dev"

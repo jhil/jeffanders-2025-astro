@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "Contrast as the Foundation of Design"
 title: "Shell Talk 006"

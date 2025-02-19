@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "Design For Devs"
 title: "Terrapin Hackers Hacktorial"

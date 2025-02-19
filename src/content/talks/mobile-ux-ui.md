@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "Mobile UX/UI Design Workshop"
 title: "AIGA UMD"

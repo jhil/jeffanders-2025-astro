@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "Mobile Design and Usability"
 title: "Udacity Course"

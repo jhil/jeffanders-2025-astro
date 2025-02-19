@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "Hackathon Branding"
 title: "MLH Hackcon 1"

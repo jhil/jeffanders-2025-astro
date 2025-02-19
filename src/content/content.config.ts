@@ -24,6 +24,8 @@ const projects = defineCollection({
 		brief: z.string(),
 		cover: z.string(),
 		external: z.string().url().optional(),
+		color: z.string().optional(),
+		link: z.string().url().optional(),
 	}),
 });
 
@@ -31,7 +33,20 @@ const lists = defineCollection({
 	schema: z.object({
 		...commonSchema,
 		icon: z.string().optional(),
+		external: z.string().url().optional(),
 	}),
 });
 
-export const collections = { projects, lists, podcasts };
+const talks = defineCollection({
+	schema: z.object({
+		...commonSchema,
+		brief: z.string(),
+		title: z.string(),
+		cover: z.string(),
+		external: z.string().url(),
+		color: z.string().optional(),
+		category: z.literal("talk"),
+	}),
+});
+
+export const collections = { projects, lists, podcasts, talks };

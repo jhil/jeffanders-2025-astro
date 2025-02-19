@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "Marketing For Humans, Not Robots"
 title: "MLH Hackcon 2"

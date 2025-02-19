@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "On Communication"
 title: "Shell Talk 037"

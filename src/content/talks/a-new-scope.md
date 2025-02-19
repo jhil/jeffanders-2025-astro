@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "A New Scope"
 title: "General Assembly"

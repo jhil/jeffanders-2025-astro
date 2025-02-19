@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "Failure vs. Risk"
 title: "Shell Talk"

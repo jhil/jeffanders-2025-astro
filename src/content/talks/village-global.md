@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "Supercharge Your Design Career"
 title: "Village Global's Venture Stories"

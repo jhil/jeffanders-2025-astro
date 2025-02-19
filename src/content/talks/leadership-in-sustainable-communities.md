@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "Leadership in Sustainable Communities"
 title: "Shell Talk 051"

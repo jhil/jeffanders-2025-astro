@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "1,000 Shitty Designs"
 title: "Technica 2017"

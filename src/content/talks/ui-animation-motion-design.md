@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "UI Animation + Motion Design"
 title: "Terrapin Hackers Hacktorial"

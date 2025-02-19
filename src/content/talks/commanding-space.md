@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "Commanding Space"
 title: "Shell Talk 030"

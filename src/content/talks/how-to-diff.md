@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "How to Diff"
 title: "MLH Hackcon 3"

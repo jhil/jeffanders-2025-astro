@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "126 - Jeff Anders"
 title: "Workspaces"

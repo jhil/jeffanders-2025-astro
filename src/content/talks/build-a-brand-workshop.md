@@ -1,5 +1,4 @@
 ---
-layout: post
 category: talk
 brief: "Build-A-Brand Workshop"
 title: "Shell Studio 004"
