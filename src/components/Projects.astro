@@ -9,6 +9,7 @@ interface Project {
 		date: string;
 		cover: string;
 		external?: string;
+		color?: string;
 	};
 	slug: string;
 }
@@ -29,21 +30,23 @@ const sortedProjects = [...projects].sort(
 	>
 		{
 			sortedProjects.map((project) => {
-				const fm = project.data;
-				const link = fm.external ? fm.external : `/projects/${project.slug}`;
+				const link = project.data.external
+					? project.data.external
+					: `/projects/${project.slug}`;
 
 				return (
 					<Tile
 						href={link}
-						target={fm.external ? "_blank" : undefined}
+						target={project.data.external ? "_blank" : undefined}
 						image={{
-							src: `/src/images/projects/${project.slug}/${fm.cover}`,
-							alt: fm.title,
+							src: `/src/images/projects/${project.slug}/${project.data.cover}`,
+							alt: project.data.title,
 							width: 384,
 							height: 256,
 						}}
-						title={fm.title}
-						label={fm.brief}
+						title={project.data.title}
+						label={project.data.brief}
+						color={project.data.color}
 					/>
 				);
 			})

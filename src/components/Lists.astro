@@ -15,6 +15,7 @@ interface List {
 		external?: string;
 	};
 	slug: string;
+	color?: string;
 }
 
 const { lists }: { lists: List[] } = Astro.props as {
@@ -30,16 +31,20 @@ lists.sort((a, b) => a.data.title.localeCompare(b.data.title));
 	>
 		{
 			lists.map((list) => {
-				const fm = list.data;
-				const link = fm.external ? fm.external : `/lists/${list.slug}`;
+				const link = list.data.external
+					? list.data.external
+					: `/lists/${list.slug}`;
 
 				return (
 					<Tile
 						href={link}
-						target={fm.external ? "_blank" : undefined}
-						icon={fm.icon ? { name: `lucide:${fm.icon}` } : undefined}
-						title={fm.title}
+						target={list.data.external ? "_blank" : undefined}
+						icon={
+							list.data.icon ? { name: `lucide:${list.data.icon}` } : undefined
+						}
+						title={list.data.title}
 						dense
+						color={list.color}
 					/>
 				);
 			})
