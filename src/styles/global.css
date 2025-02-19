@@ -203,9 +203,9 @@
 		content: "";
 		position: absolute;
 		inset: 0;
-		background: radial-gradient(
+		background-image: radial-gradient(
 			circle at var(--x, 50%) var(--y, 50%),
-			var(--cursor-color, hsla(60, 100%, 50%, 0.15)) 0%,
+			color-mix(in srgb, var(--cursor-color) 10%, transparent) 0%,
 			transparent 100%
 		);
 		opacity: 0;

@@ -49,7 +49,7 @@ const imageSize = dense ? 48 : (image?.width ?? 0);
 			"items-center": dense || !image || imageSize < 100,
 		},
 	]}
-	style={`--cursor-color: ${color}15`}
+	style={`--cursor-color: ${color ? `#${color.replace("#", "")}` : "#FFFF00"}`}
 >
 	<script>
 		function handleMouseMove(e: Event) {
