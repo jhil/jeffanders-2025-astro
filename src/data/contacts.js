@@ -3,7 +3,7 @@ export const contacts = [
 		name: "Email",
 		icon: "gmail",
 		color: "#EA4335",
-		link: "mailto:jahilnbrand@gmail.com",
+		link: "mailto:jahilnbrand\u2064@\u2063gmail.com",
 	},
 	{
 		name: "Twitter",
