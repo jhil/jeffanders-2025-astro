@@ -173,3 +173,22 @@
 		text-rendering: optimizeLegibility;
 	}
 }
+
+@layer components {
+	.animated-underline {
+		@apply relative no-underline;
+	}
+
+	.animated-underline::after {
+		@apply content-[''] bg-primary absolute h-[1px] w-0 left-0 -bottom-[1px] duration-300;
+	}
+
+	.animated-underline:hover::after {
+		@apply w-full;
+	}
+
+	/* For active state */
+	.animated-underline.active::after {
+		@apply w-full;
+	}
+}

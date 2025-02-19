@@ -16,7 +16,8 @@ function updateActiveSection() {
 		) {
 			// Remove active class from all links
 			navLinks.forEach((link) => {
-				link.classList.remove("text-primary", "underline");
+				link.querySelector(".animated-underline")?.classList.remove("active");
+				link.classList.remove("text-primary");
 			});
 
 			// Add active class to current section link
@@ -24,7 +25,10 @@ function updateActiveSection() {
 				`.nav-link[data-section="${sectionId}"]`
 			);
 			if (activeLink) {
-				activeLink.classList.add("text-primary", "underline");
+				activeLink
+					.querySelector(".animated-underline")
+					?.classList.add("active");
+				activeLink.classList.add("text-primary");
 			}
 		}
 	});
