@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
+import Tile from "./Tile.astro";
 import { contacts } from "../data/contacts";
 ---
 
@@ -9,29 +9,18 @@ import { contacts } from "../data/contacts";
 	>
 		{
 			contacts.map((contact) => (
-				<a
+				<Tile
 					href={contact.link}
 					target="_blank"
-					class="outline outline-muted p-8 flex gap-4 group items-center"
-				>
-					<Icon
-						name={`simple-icons:${contact.icon}`}
-						class={`h-5 w-5 flex-shrink-0 ${contact.invertInDark ? "dark:invert" : ""}`}
-						style={`color: ${contact.color}`}
-					/>
-					<div class="flex flex-col justify-center">
-						<h3 class="text-sm font-medium">
-							<span class="animated-underline group-hover:after:w-full">
-								{contact.name}
-							</span>
-						</h3>
-						{contact.handle && (
-							<span class="text-xs text-muted-foreground/90 group-hover:text-muted-foreground">
-								{contact.handle}
-							</span>
-						)}
-					</div>
-				</a>
+					icon={{
+						name: `simple-icons:${contact.icon}`,
+						color: contact.color,
+						invertInDark: contact.invertInDark,
+					}}
+					title={contact.name}
+					label={contact.handle}
+					dense
+				/>
 			))
 		}
 	</div>

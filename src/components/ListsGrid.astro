@@ -1,5 +1,5 @@
 ---
-import { Icon } from "astro-icon/components";
+import Tile from "./Tile.astro";
 
 /*
   Expects a prop `lists`, an array of objects from the 'lists' collection.
@@ -31,24 +31,23 @@ lists.sort((a, b) => a.data.title.localeCompare(b.data.title));
 		{
 			lists.map((list) => {
 				const fm = list.data;
-				// If external URL is provided, use that; otherwise, link to the internal list page.
 				const link = fm.external ? fm.external : `/lists/${list.slug}`;
-				const target = fm.external ? "_blank" : "_self";
+
 				return (
-					<a
+					<Tile
 						href={link}
-						target={target}
-						class="outline outline-muted p-8 flex gap-4 group  items-center"
-					>
-						{fm.icon && (
-							<Icon name={`lucide:${fm.icon}`} class="h-5 w-5 flex-shrink-0" />
-						)}
-						<h3 class="text-sm font-medium">
-							<span class="animated-underline group-hover:after:w-full">
-								{fm.title}
-							</span>
-						</h3>
-					</a>
+						target={fm.external ? "_blank" : undefined}
+						icon={
+							fm.icon
+								? {
+										name: `lucide:${fm.icon}`,
+										class: "flex-shrink-0",
+									}
+								: undefined
+						}
+						title={fm.title}
+						dense
+					/>
 				);
 			})
 		}

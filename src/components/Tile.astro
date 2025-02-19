@@ -1,0 +1,80 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+
+interface Props {
+	href: string;
+	target?: string;
+	icon?: {
+		name: string;
+		color?: string;
+		class?: string;
+		invertInDark?: boolean;
+	};
+	image?: {
+		src: string;
+		alt: string;
+		width: number;
+		height: number;
+		class?: string;
+	};
+	title: string;
+	label?: string;
+	dense?: boolean;
+}
+
+const { href, target, icon, image, title, label, dense = false } = Astro.props;
+
+// For dense layout, image dimensions should be 48x48 (3rem)
+const imageSize = dense ? 48 : (image?.width ?? 0);
+---
+
+<a
+	href={href}
+	target={target}
+	class="outline outline-muted p-8 flex gap-4 group"
+	class:list={[
+		{ "flex-col": !dense && imageSize >= 100 },
+		{ "items-center": dense || !image || imageSize < 100 },
+	]}
+>
+	{
+		icon && (
+			<Icon
+				name={icon.name}
+				class={`h-5 w-5 flex-shrink-0 ${icon.class || ""} ${
+					icon.invertInDark ? "dark:invert" : ""
+				}`}
+				style={icon.color ? `color: ${icon.color}` : undefined}
+			/>
+		)
+	}
+
+	{
+		image && (
+			<Image
+				src={image.src}
+				alt={image.alt}
+				width={dense ? 48 : image.width}
+				height={dense ? 48 : image.height}
+				class={`object-cover rounded-xs flex-shrink-0 ${image.class || ""}`}
+				loading="lazy"
+			/>
+		)
+	}
+
+	<div class="flex flex-col gap-y-1">
+		<h3 class="text-sm font-medium">
+			<span class="animated-underline group-hover:after:w-full">
+				{title}
+			</span>
+		</h3>
+		{
+			label && (
+				<span class="text-xs text-muted-foreground/90 group-hover:text-muted-foreground">
+					{label}
+				</span>
+			)
+		}
+	</div>
+</a>

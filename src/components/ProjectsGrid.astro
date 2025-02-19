@@ -1,5 +1,7 @@
 ---
 import { Image } from "astro:assets";
+import Tile from "./Tile.astro";
+
 interface Project {
 	data: {
 		title: string;
@@ -27,34 +29,22 @@ projects.sort(
 		{
 			projects.map((project) => {
 				const fm = project.data;
-				// If external URL is provided, use that; otherwise, link to the internal project page.
 				const link = fm.external ? fm.external : `/projects/${project.slug}`;
-				const target = fm.external ? "_blank" : "_self";
+
 				return (
-					<a
+					<Tile
 						href={link}
-						target={target}
-						class="outline outline-muted p-8 flex flex-col gap-y-4 group"
-					>
-						<Image
-							src={`/src/images/projects/${project.slug}/${fm.cover}`}
-							alt={fm.title}
-							width={384}
-							height={256}
-							class="object-cover rounded-xs aspect-[3/2]"
-							loading="lazy"
-						/>
-						<div class="flex flex-col gap-y-2">
-							<h3 class="text-sm font-medium">
-								<span class="animated-underline group-hover:after:w-full">
-									{fm.title}
-								</span>
-							</h3>
-							<p class="text-xs text-muted-foreground/90 group-hover:text-muted-foreground">
-								{fm.brief}
-							</p>
-						</div>
-					</a>
+						target={fm.external ? "_blank" : undefined}
+						image={{
+							src: `/src/images/projects/${project.slug}/${fm.cover}`,
+							alt: fm.title,
+							width: 384,
+							height: 256,
+							class: "aspect-[3/2]",
+						}}
+						title={fm.title}
+						label={fm.brief}
+					/>
 				);
 			})
 		}
