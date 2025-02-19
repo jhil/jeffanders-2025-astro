@@ -5,5 +5,5 @@ title: "Workspaces"
 date: 2022-02-05
 cover: workspaces.png
 external: https://www.workspaces.xyz/p/126-jeff-anders
-color: "#2EBA66"
+color: "#00C05A"
 ---
