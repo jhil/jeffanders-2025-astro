@@ -1,9 +1,9 @@
 {
-  "name": "@area44/astro-shadcn-ui-template",
-  "version": "25.01.27",
-  "description": "An Astro template for building apps.",
+  "name": "jeff-anders",
+  "version": "2025.0",
+  "description": "Jeff's portfion.",
   "author": {
-    "name": "AREA44"
+    "name": "Jeff Anders"
   },
   "license": "MIT",
   "scripts": {
