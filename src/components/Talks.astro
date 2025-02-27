@@ -23,6 +23,16 @@ const { talks } = Astro.props as Props;
 const sortedTalks = [...talks].sort(
 	(a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
 );
+
+// Function to get the image path
+function getImagePath(talk: Talk) {
+	if (talk.data.cover.startsWith("http")) {
+		return talk.data.cover;
+	}
+
+	// Use path that works with Astro's image handling
+	return `/src/images/talks/${talk.data.cover}`;
+}
 ---
 
 <section id="talks" class="outline outline-muted">
@@ -39,7 +49,7 @@ const sortedTalks = [...talks].sort(
 						href={link}
 						target={fm.external ? "_blank" : undefined}
 						image={{
-							src: `/src/images/talks/${fm.cover}`,
+							src: getImagePath(talk),
 							alt: fm.title,
 							width: 48,
 							height: 48,

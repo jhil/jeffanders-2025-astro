@@ -2,6 +2,7 @@
 import { buttonVariants } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import { Image } from "astro:assets";
+import avatarImage from "../images/jeff-anders-photo.jpg";
 
 const navItems = [
 	{ label: "Teams", href: "/#teams" },
@@ -17,7 +18,7 @@ const navItems = [
 >
 	<a href="/" class="flex items-center space-x-4 group">
 		<Image
-			src="/src/images/jeff-anders-photo.jpg"
+			src={avatarImage}
 			alt="Jeff Anders avatar"
 			class="w-8 h-8 rounded-xs"
 			width={32}
