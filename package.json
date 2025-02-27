@@ -17,7 +17,6 @@
     "@astrojs/mdx": "^4.0.8",
     "@astrojs/netlify": "^6.2.1",
     "@astrojs/react": "^4.2.0",
-    "@fontsource/libre-franklin": "^5.1.2",
     "@iconify-json/lucide": "^1.2.26",
     "@iconify-json/simple-icons": "^1.2.26",
     "@mdi/js": "^7.4.47",

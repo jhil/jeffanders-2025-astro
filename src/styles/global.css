@@ -1,5 +1,4 @@
 @import "tailwindcss";
-@import "@fontsource/libre-franklin";
 
 @plugin "tailwindcss-animate";
 
@@ -56,7 +55,7 @@
 		}
 	}
 
-	--font-sans: "Libre Franklin", sans-serif;
+	--font-sans: "PP Neue Montreal", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 @utility container {
@@ -166,8 +165,7 @@
 	}
 
 	body {
-		@apply bg-background text-foreground;
-		font-family: "Libre Franklin", -apple-system, BlinkMacSystemFont, sans-serif;
+		@apply bg-background text-foreground font-sans;
 		font-feature-settings: "liga" 1, "rlig" 1, "calt" 1, "case" 1;
 		font-synthesis-weight: none;
 		font-display: swap;
