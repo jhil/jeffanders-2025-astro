@@ -1,7 +1,7 @@
 ---
-import { buttonVariants } from "@/components/ui/button";
 import ThemeToggle from "@/components/ThemeToggle.astro";
 import { Image } from "astro:assets";
+import { Button } from "@/components/ui/button";
 import avatarImage from "../images/jeff-anders-photo.jpg";
 
 const navItems = [
@@ -32,11 +32,13 @@ const navItems = [
 				navItems.map(({ href, label }) => (
 					<li>
 						<a
-							class={`${buttonVariants({ variant: "link" })} nav-link `}
 							href={href}
 							data-section={href.replace("/#", "")}
+							class="nav-link"
 						>
-							<span class="font-medium animated-underline">{label}</span>
+							<Button variant="link">
+								<span class="animated-underline">{label}</span>
+							</Button>
 						</a>
 					</li>
 				))
