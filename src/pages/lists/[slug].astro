@@ -32,8 +32,8 @@ const { Content } = await list.render();
 	description={list.data.description}
 	ogImage={list.data.ogImage}
 >
-	<article class="prose flex flex-col mx-auto py-8 gap-16">
-		<h1 class="text-6xl font-medium px-8">{list.data.title}</h1>
+	<article class="flex flex-col py-8 mx-auto prose gap-16">
+		<h1 class="px-8 text-6xl font-medium">{list.data.title}</h1>
 		<Content />
 	</article>
 </BaseLayout>

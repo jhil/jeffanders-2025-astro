@@ -13,7 +13,7 @@ const { teams } = Astro.props;
 ---
 
 <section id="teams" class="overflow-hidden outline outline-muted">
-	<div class="flex overflow-x-auto no-scrollbar gap-x-16 p-8">
+	<div class="flex p-8 overflow-x-auto no-scrollbar gap-x-16">
 		{
 			teams.map(
 				(team: {
@@ -24,7 +24,7 @@ const { teams } = Astro.props;
 					active: boolean;
 				}) => (
 					<a
-						class="flex items-center gap-4 flex-shrink-0 group"
+						class="flex items-center flex-shrink-0 gap-4 group"
 						href={team.url}
 						target="_blank"
 					>

@@ -14,7 +14,7 @@ const navItems = [
 ---
 
 <header
-	class="flex justify-between items-center px-8 py-8 bg-background w-full sticky top-0 z-50 outline outline-muted"
+	class="sticky top-0 z-50 flex items-center justify-between w-full px-8 py-8 bg-background outline outline-muted"
 >
 	<a href="/" class="flex items-center space-x-4 group">
 		<Image
@@ -36,7 +36,7 @@ const navItems = [
 							href={href}
 							data-section={href.replace("/#", "")}
 						>
-							<span class="animated-underline font-medium">{label}</span>
+							<span class="font-medium animated-underline">{label}</span>
 						</a>
 					</li>
 				))
