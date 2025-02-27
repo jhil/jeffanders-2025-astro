@@ -87,6 +87,13 @@
 	::file-selector-button {
 		border-color: var(--color-gray-200, currentColor);
 	}
+
+	/* Make all images scale proportionally to full width by default */
+	p img {
+		width: 100%;
+		height: auto;
+		display: block;
+	}
 }
 
 @layer base {
@@ -165,7 +172,7 @@
 	}
 
 	body {
-		@apply bg-background text-foreground font-sans;
+		@apply font-sans bg-background text-foreground;
 		font-feature-settings: "liga" 1, "rlig" 1, "calt" 1, "case" 1;
 		font-synthesis-weight: none;
 		font-display: swap;
