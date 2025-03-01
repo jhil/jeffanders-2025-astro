@@ -76,6 +76,7 @@
 		width: 100%;
 		height: auto;
 		display: block;
+		cursor: crosshair;
 	}
 }
 
@@ -153,6 +154,8 @@
 	html {
 		@apply scroll-smooth;
 		scroll-padding-top: 6rem;
+		scrollbar-gutter: stable;
+		scrollbar-width: thin;
 	}
 
 	body {
@@ -160,7 +163,6 @@
 		font-feature-settings: "liga" 1, "rlig" 1, "calt" 1, "case" 1;
 		font-synthesis-weight: none;
 		font-display: swap;
-
 		text-rendering: optimizeLegibility;
 	}
 }
@@ -212,6 +214,30 @@
 	}
 
 	.gradient-cursor.active::before {
+		opacity: 1;
+	}
+
+	/* Mobile menu transitions */
+	#mobile-menu {
+		transition: opacity 0.3s ease, visibility 0.3s ease;
+		opacity: 0;
+		visibility: hidden;
+	}
+
+	#mobile-menu:not(.hidden) {
+		opacity: 1;
+		visibility: visible;
+	}
+
+	.mobile-nav-link {
+		transform: translateY(10px);
+		opacity: 0;
+		transition: transform 0.3s ease, opacity 0.3s ease;
+		transition-delay: calc(var(--index, 0) * 0.05s);
+	}
+
+	#mobile-menu:not(.hidden) .mobile-nav-link {
+		transform: translateY(0);
 		opacity: 1;
 	}
 }

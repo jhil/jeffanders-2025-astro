@@ -11,7 +11,11 @@ import { getCollection } from "astro:content";
 
 const projects = await getCollection("projects");
 const lists = await getCollection("lists");
-const talks = await getCollection("talks");
+const talksCollection = await getCollection("talks");
+const talks = talksCollection.map((entry) => ({
+	...entry,
+	slug: entry.id,
+}));
 ---
 
 <BaseLayout

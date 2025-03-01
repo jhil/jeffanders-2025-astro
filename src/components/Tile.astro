@@ -44,7 +44,7 @@ const imageSize = dense ? 48 : (image?.width ?? 0);
 	href={href}
 	target={target}
 	class:list={[
-		"outline-[0.5px] outline-muted p-8 flex gap-4 group gradient-cursor",
+		"outline-[0.5px] outline-muted p-4 sm:p-8 flex gap-4 group gradient-cursor",
 		{
 			"flex-col": !dense && imageSize >= 100,
 			"items-center": dense || !image || imageSize < 100,

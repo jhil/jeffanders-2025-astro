@@ -76,9 +76,11 @@ const isListContent = collection === "lists";
 
 <BaseLayout title={title} description={description} ogImage={ogImage}>
 	<article
-		class={`flex flex-col py-8 mx-auto prose gap-16 ${isListContent ? "" : "px-8 max-w-screen-lg"}`}
+		class={`flex flex-col py-8 mx-auto prose gap-8 sm:gap-16 ${isListContent ? "" : "max-w-screen-lg px-4 sm:px-8"}`}
 	>
-		<h1 class={`${isListContent ? "px-8" : ""} text-6xl font-medium`}>
+		<h1
+			class={`text-4xl sm:text-6xl font-medium ${isListContent && "px-4 sm:px-8"}`}
+		>
 			{title}
 		</h1>
 		<Content />

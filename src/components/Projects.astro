@@ -61,8 +61,13 @@ const projectImages = await Promise.all(
 ---
 
 <section id="projects">
+	<!-- <h1
+		class="px-4 sm:px-8 pt-24 pb-8 text-xl sm:text-2xl font-medium outline-[0.5px] outline-muted"
+	>
+		Projects
+	</h1> -->
 	<div
-		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(18rem,1fr))]"
+		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]"
 	>
 		{
 			projectImages.map(({ project, imageSource }) => {

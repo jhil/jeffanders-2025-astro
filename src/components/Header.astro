@@ -14,7 +14,7 @@ const navItems = [
 ---
 
 <header
-	class="sticky top-0 z-50 flex items-center justify-between w-full px-8 py-8 bg-background outline-[0.5px] outline-muted"
+	class="sticky top-0 z-50 flex items-center justify-between w-full px-4 sm:px-8 py-4 sm:py-8 bg-background outline-[0.5px] outline-muted"
 >
 	<a href="/" class="flex items-center space-x-4 group">
 		<Image
@@ -26,7 +26,9 @@ const navItems = [
 		/>
 		<h1 class="font-semibold">Jeff Anders</h1>
 	</a>
-	<nav class="flex space-x-2">
+
+	<!-- Desktop Navigation -->
+	<nav class="hidden md:flex space-x-2">
 		<ul class="flex space-x-1">
 			{
 				navItems.map(({ href, label }) => (
@@ -46,9 +48,99 @@ const navItems = [
 		</ul>
 		<ThemeToggle />
 	</nav>
+
+	<!-- Mobile Menu Button -->
+	<div class="flex items-center space-x-2 md:hidden">
+		<ThemeToggle />
+		<button
+			id="mobile-menu-toggle"
+			aria-label="Toggle mobile menu"
+			class="p-2 text-foreground"
+		>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="w-6 h-6 menu-icon"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+			</svg>
+			<svg
+				xmlns="http://www.w3.org/2000/svg"
+				fill="none"
+				viewBox="0 0 24 24"
+				stroke-width="1.5"
+				stroke="currentColor"
+				class="w-6 h-6 close-icon hidden"
+			>
+				<path
+					stroke-linecap="round"
+					stroke-linejoin="round"
+					d="M6 18L18 6M6 6l12 12"></path>
+			</svg>
+		</button>
+	</div>
 </header>
+
+<!-- Mobile Menu -->
+<div
+	id="mobile-menu"
+	class="fixed inset-0 z-40 hidden bg-background/95 backdrop-blur-sm pt-24"
+>
+	<nav class="container px-4 sm:px-8">
+		<ul class="flex flex-col space-y-4">
+			{
+				navItems.map(({ href, label }, index) => (
+					<li>
+						<a
+							href={href}
+							data-section={href.replace("/#", "")}
+							class="nav-link mobile-nav-link text-xl font-medium block p-2"
+							style={`--index: ${index}`}
+						>
+							<span class="animated-underline">{label}</span>
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</nav>
+</div>
 
 <script>
 	import { initActiveSection } from "@/scripts/activeSection";
+
+	// Initialize active section
 	initActiveSection();
+
+	// Mobile menu functionality
+	const mobileMenuToggle = document.getElementById("mobile-menu-toggle");
+	const mobileMenu = document.getElementById("mobile-menu");
+	const menuIcon = document.querySelector(".menu-icon");
+	const closeIcon = document.querySelector(".close-icon");
+	const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+	if (mobileMenuToggle && mobileMenu && menuIcon && closeIcon) {
+		mobileMenuToggle.addEventListener("click", () => {
+			mobileMenu.classList.toggle("hidden");
+			menuIcon.classList.toggle("hidden");
+			closeIcon.classList.toggle("hidden");
+			document.body.classList.toggle("overflow-hidden");
+		});
+
+		// Close mobile menu when clicking on a link
+		mobileNavLinks.forEach((link) => {
+			link.addEventListener("click", () => {
+				mobileMenu.classList.add("hidden");
+				menuIcon.classList.remove("hidden");
+				closeIcon.classList.add("hidden");
+				document.body.classList.remove("overflow-hidden");
+			});
+		});
+	}
 </script>
