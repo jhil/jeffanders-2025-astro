@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
 import Tile from "./Tile.astro";
 import SectionTitle from "./SectionTitle.astro";
+import ResponsiveGrid from "./ResponsiveGrid.astro";
 
 interface Project {
 	data: {
@@ -63,9 +64,7 @@ const projectImages = await Promise.all(
 
 <section id="projects">
 	<SectionTitle title="Projects" />
-	<div
-		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]"
-	>
+	<ResponsiveGrid>
 		{
 			projectImages.map(({ project, imageSource }) => {
 				const link = project.data.external
@@ -89,5 +88,5 @@ const projectImages = await Promise.all(
 				);
 			})
 		}
-	</div>
+	</ResponsiveGrid>
 </section>

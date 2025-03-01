@@ -67,7 +67,9 @@ interface TeamWithImageSource extends Omit<Team, "image"> {
 		<!-- Gradient masks -->
 		<GradientMask direction="left" />
 
-		<div class="flex p-4 sm:p-8 overflow-x-auto no-scrollbar gap-x-12">
+		<div
+			class="flex px-4 sm:px-8 py-4 overflow-x-auto no-scrollbar gap-x-8 sm:gap-x-12"
+		>
 			{
 				teamImages.map((team: TeamWithImageSource) => (
 					<a

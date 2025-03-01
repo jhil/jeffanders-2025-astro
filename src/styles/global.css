@@ -143,9 +143,10 @@
 
 	html {
 		@apply scroll-smooth;
-		scroll-padding-top: 6rem;
+		scroll-padding-top: 8rem;
 		scrollbar-gutter: stable;
 		scrollbar-width: thin;
+		overscroll-behavior-x: none;
 	}
 
 	body {
@@ -154,6 +155,7 @@
 		font-synthesis-weight: none;
 		font-display: swap;
 		text-rendering: optimizeLegibility;
+		overscroll-behavior-x: none;
 	}
 }
 

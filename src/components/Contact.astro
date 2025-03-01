@@ -2,13 +2,12 @@
 import Tile from "./Tile.astro";
 import { contacts } from "../data/contacts";
 import SectionTitle from "./SectionTitle.astro";
+import ResponsiveGrid from "./ResponsiveGrid.astro";
 ---
 
 <section id="contact">
 	<SectionTitle title="Contact" />
-	<div
-		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]"
-	>
+	<ResponsiveGrid>
 		{
 			contacts.map((contact) => (
 				<Tile
@@ -26,5 +25,5 @@ import SectionTitle from "./SectionTitle.astro";
 				/>
 			))
 		}
-	</div>
+	</ResponsiveGrid>
 </section>

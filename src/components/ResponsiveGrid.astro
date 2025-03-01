@@ -1,0 +1,39 @@
+---
+interface Props {
+	/**
+	 * Minimum column width for small screens (default: 12rem)
+	 */
+	minColWidthSm?: string;
+
+	/**
+	 * Minimum column width for medium screens and up (default: 16rem)
+	 */
+	minColWidthMd?: string;
+
+	/**
+	 * Maximum column width fraction (default: 1fr)
+	 */
+	maxColWidth?: string;
+
+	/**
+	 * Additional classes to apply to the grid
+	 */
+	class?: string;
+}
+
+const {
+	minColWidthSm = "12rem",
+	minColWidthMd = "15.5rem",
+	maxColWidth = "1fr",
+	class: className = "",
+} = Astro.props;
+
+const gridClassSm = `grid-cols-[repeat(auto-fit,minmax(${minColWidthSm},${maxColWidth}))]`;
+const gridClassMd = `sm:grid-cols-[repeat(auto-fit,minmax(${minColWidthMd},${maxColWidth}))]`;
+---
+
+<div
+	class={`grid  sm:px-4 justify-center ${gridClassSm} ${gridClassMd} ${className}`}
+>
+	<slot />
+</div>

@@ -1,6 +1,7 @@
 ---
 import Tile from "./Tile.astro";
 import SectionTitle from "./SectionTitle.astro";
+import ResponsiveGrid from "./ResponsiveGrid.astro";
 
 /*
   Expects a prop `lists`, an array of objects from the 'lists' collection.
@@ -28,9 +29,7 @@ lists.sort((a, b) => a.data.title.localeCompare(b.data.title));
 
 <section id="lists">
 	<SectionTitle title="Lists" />
-	<div
-		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]"
-	>
+	<ResponsiveGrid>
 		{
 			lists.map((list) => {
 				const link = list.data.external ? list.data.external : `/${list.slug}`;
@@ -49,5 +48,5 @@ lists.sort((a, b) => a.data.title.localeCompare(b.data.title));
 				);
 			})
 		}
-	</div>
+	</ResponsiveGrid>
 </section>

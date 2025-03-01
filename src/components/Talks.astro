@@ -2,6 +2,7 @@
 import Tile from "./Tile.astro";
 import type { ImageMetadata } from "astro";
 import SectionTitle from "./SectionTitle.astro";
+import ResponsiveGrid from "./ResponsiveGrid.astro";
 
 interface Props {
 	talks: Talk[];
@@ -64,9 +65,7 @@ const talkImages = await Promise.all(
 
 <section id="talks">
 	<SectionTitle title="Talks" />
-	<div
-		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]"
-	>
+	<ResponsiveGrid>
 		{
 			talkImages.map(({ talk, imageSource }) => {
 				const fm = talk.data;
@@ -91,5 +90,5 @@ const talkImages = await Promise.all(
 				);
 			})
 		}
-	</div>
+	</ResponsiveGrid>
 </section>
