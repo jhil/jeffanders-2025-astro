@@ -2,9 +2,9 @@
 
 @font-face {
 	font-family: "TT Interphases";
-	src: url("/fonts/TT-Interphases-Var-Roman.woff2") format("woff2"),
-		url("/fonts/TT-Interphases-Var-Roman.woff") format("woff"),
-		url("/fonts/TT-Interphases-Var-Roman.ttf") format("truetype");
+	src: url("/fonts/TT-Interphases-Var-Roman.woff2") format("woff2");
+	font-weight: 400 500 600 700;
+	font-style: normal;
 	font-display: swap;
 }
 

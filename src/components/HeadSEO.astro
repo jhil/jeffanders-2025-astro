@@ -40,4 +40,12 @@ const { title, description, ogImage } = Astro.props;
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ogImage} />
 
+<link
+	rel="preload"
+	href="/fonts/TT-Interphases-Var-Roman.woff2"
+	as="font"
+	type="font/woff2"
+	crossorigin
+/>
+
 <ClientRouter />
