@@ -23,7 +23,7 @@ interface Props {
 
 const {
 	minColWidthSm = "12rem",
-	minColWidthMd = "16rem",
+	minColWidthMd = "18rem",
 	maxColWidth = "1fr",
 	class: className = "",
 } = Astro.props;
@@ -33,7 +33,7 @@ const gridClassMd = `sm:grid-cols-[repeat(auto-fit,minmax(${minColWidthMd},${max
 ---
 
 <div
-	class={`grid  sm:px-4 justify-center ${gridClassSm} ${gridClassMd} ${className}`}
+	class={`grid sm:px-4 justify-center ${gridClassSm} ${gridClassMd} ${className}`}
 >
 	<slot />
 </div>

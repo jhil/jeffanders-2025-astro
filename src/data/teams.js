@@ -1,6 +1,6 @@
 export const teams = [
 	{
-		image: "/src/images/teams/ambrook-icon.png",
+		image: "/src/images/teams/ambrook-icon.svg",
 		name: "Ambrook",
 		role: "Co-Founder",
 		url: "https://ambrook.com?ref=jeffanders.co",
@@ -13,43 +13,43 @@ export const teams = [
 		url: "https://scale.com/",
 	},
 	{
-		image: "/src/images/teams/meta-icon.png",
+		image: "/src/images/teams/meta-icon.svg",
 		name: "Meta",
 		role: "Product Designer",
 		url: "https://design.facebook.com/",
 	},
 	{
-		image: "/src/images/teams/minimill-icon.png",
+		image: "/src/images/teams/minimill-icon.svg",
 		name: "Minimill",
 		role: "Co-Founder",
 		url: "https://minimill.co/",
 	},
 	{
-		image: "/src/images/teams/autodesk-icon.png",
+		image: "/src/images/teams/autodesk-icon.svg",
 		name: "Autodesk",
 		role: "Product Intern",
 		url: "https://autodesk.com/",
 	},
 	{
-		image: "/src/images/teams/venmo-icon.png",
+		image: "/src/images/teams/venmo-icon.svg",
 		name: "Venmo",
 		role: "Design Intern",
 		url: "https://venmo.com/",
 	},
 	{
-		image: "/src/images/teams/interact-icon.png",
+		image: "/src/images/teams/interact-icon.svg",
 		name: "Interact",
 		role: "Design Lead",
 		url: "https://joininteract.com/",
 	},
 	{
-		image: "/src/images/teams/bitcamp-icon.png",
+		image: "/src/images/teams/bitcamp-icon.svg",
 		name: "Bitcamp",
 		role: "Co-Founder",
 		url: "https://bit.camp/",
 	},
 	{
-		image: "/src/images/teams/startupshell-icon.png",
+		image: "/src/images/teams/startupshell-icon.svg",
 		name: "Startup Shell",
 		role: "Director",
 		url: "https://startupshell.org/",
@@ -65,7 +65,7 @@ export const teams = [
 		role: "Founder",
 	},
 	{
-		image: "/src/images/teams/umd-icon.png",
+		image: "/src/images/teams/umd-icon.svg",
 		name: "U of Maryland",
 		role: "Alum",
 		url: "https://umd.edu",

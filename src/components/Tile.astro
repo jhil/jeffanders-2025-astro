@@ -37,8 +37,12 @@ const {
 	color,
 } = Astro.props;
 
-// For dense layout, image dimensions should be 48x48 (3rem)
-const imageSize = dense ? 48 : (image?.width ?? 0);
+// For dense layout, we'll keep the display size at 48x48 (3rem)
+// but use the original image dimensions for better quality
+const displaySize = dense ? 48 : (image?.width ?? 0);
+// Use the original image dimensions even for dense layout
+const imageWidth = image?.width ?? 0;
+const imageHeight = image?.height ?? 0;
 ---
 
 <a
@@ -47,8 +51,8 @@ const imageSize = dense ? 48 : (image?.width ?? 0);
 	class:list={[
 		"p-4 flex gap-4 group gradient-cursor",
 		{
-			"flex-col": !dense && imageSize >= 100,
-			"items-center": dense || !image || imageSize < 100,
+			"flex-col": !dense && displaySize >= 100,
+			"items-center": dense || !image || displaySize < 100,
 		},
 	]}
 	style={`--cursor-color: ${color ? `#${color.replace("#", "")}` : "#FFFF00"}`}
@@ -106,8 +110,8 @@ const imageSize = dense ? 48 : (image?.width ?? 0);
 					<img
 						src={image.src}
 						alt={image.alt}
-						width={dense ? 48 : image.width}
-						height={dense ? 48 : image.height}
+						width={imageWidth}
+						height={imageHeight}
 						class="absolute object-cover w-full h-full rounded-xs mix-blend-multiply dark:mix-blend-screen"
 						loading={image.priority ? "eager" : "lazy"}
 						decoding="async"
@@ -117,8 +121,8 @@ const imageSize = dense ? 48 : (image?.width ?? 0);
 					<Image
 						src={image.src}
 						alt={image.alt}
-						width={dense ? 48 : image.width}
-						height={dense ? 48 : image.height}
+						width={imageWidth}
+						height={imageHeight}
 						class="absolute object-cover w-full h-full rounded-xs mix-blend-multiply dark:mix-blend-screen"
 						loading={image.priority ? "eager" : "lazy"}
 						decoding="async"
@@ -136,7 +140,7 @@ const imageSize = dense ? 48 : (image?.width ?? 0);
 		</h3>
 		{
 			label && (
-				<span class="hidden sm:flex text-xs 2xl:text-sm transition-all duration-200 text-muted-foreground/50 group-hover:text-muted-foreground">
+				<span class="hidden text-xs sm:flex 2xl:text-sm transition-all duration-200 text-muted-foreground/50 group-hover:text-muted-foreground">
 					{label}
 				</span>
 			)
