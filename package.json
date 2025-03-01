@@ -1,7 +1,7 @@
 {
   "name": "jeff-anders",
   "version": "2025.0",
-  "description": "Jeff's portfion.",
+  "description": "Jeff's portfolio",
   "author": {
     "name": "Jeff Anders"
   },
@@ -40,5 +40,5 @@
     "netlify-cli": "^18.1.0",
     "typescript": "^5.7.3"
   },
-  "packageManager": "pnpm@9.15.4"
+  "packageManager": "pnpm@10.5.2"
 }
