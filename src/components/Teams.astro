@@ -59,7 +59,7 @@ interface TeamWithImageSource extends Omit<Team, "image"> {
 }
 ---
 
-<section id="teams" class="overflow-hidden outline-[0.5px] outline-muted">
+<section id="teams" class="overflow-hidden">
 	<div class="flex p-4 sm:p-8 overflow-x-auto no-scrollbar gap-x-12">
 		{
 			teamImages.map((team: TeamWithImageSource) => (
