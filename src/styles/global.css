@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+@font-face {
+	font-family: "TT Interphases";
+	src: url("/fonts/TT-Interphases-Var-Roman.woff2") format("woff2"),
+		url("/fonts/TT-Interphases-Var-Roman.woff") format("woff"),
+		url("/fonts/TT-Interphases-Var-Roman.ttf") format("truetype");
+	font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 @theme {
@@ -30,7 +38,7 @@
 	--color-card: hsl(var(--card));
 	--color-card-foreground: hsl(var(--card-foreground));
 
-	--font-sans: "PP Neue Montreal", -apple-system, BlinkMacSystemFont, sans-serif;
+	--font-sans: "TT Interphases", -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 @utility container {
