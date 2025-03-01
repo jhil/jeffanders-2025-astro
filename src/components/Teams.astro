@@ -1,5 +1,14 @@
 ---
 import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Team {
+	image: string;
+	name: string;
+	role: string;
+	url?: string;
+	active?: boolean;
+}
 
 /*
 Expects a prop `teams`, an array of objects with:
@@ -9,47 +18,89 @@ Expects a prop `teams`, an array of objects with:
 - year: string or number (year)
 - active: boolean (whether the team is active)
 */
-const { teams } = Astro.props;
+const { teams } = Astro.props as { teams: Team[] };
+
+// Function to get the image path or import it dynamically
+async function getImageSource(imagePath: string) {
+	if (imagePath.startsWith("http")) {
+		return imagePath;
+	}
+
+	// For local images, use dynamic import
+	try {
+		// Use dynamic import for local images
+		const images = import.meta.glob<{ default: ImageMetadata }>(
+			"/src/images/teams/**/*.{jpeg,jpg,png,gif,avif,webp,svg}"
+		);
+
+		if (images[imagePath]) {
+			const image = await images[imagePath]();
+			return image.default;
+		} else {
+			console.error(`Image not found: ${imagePath}`);
+			return imagePath; // Fallback to the original path
+		}
+	} catch (error) {
+		console.error("Error loading image:", error);
+		return imagePath; // Fallback to the original path
+	}
+}
+
+// Process all team images upfront
+const teamImages = await Promise.all(
+	teams.map(async (team: Team) => ({
+		...team,
+		imageSource: await getImageSource(team.image),
+	}))
+);
+
+interface TeamWithImageSource extends Omit<Team, "image"> {
+	imageSource: string | ImageMetadata;
+}
 ---
 
 <section id="teams" class="overflow-hidden outline-[0.5px] outline-muted">
 	<div class="flex p-8 overflow-x-auto no-scrollbar gap-x-16">
 		{
-			teams.map(
-				(team: {
-					image: string;
-					name: string;
-					role: string;
-					url: string;
-					active: boolean;
-				}) => (
-					<a
-						class="flex items-center flex-shrink-0 gap-4 group"
-						href={team.url}
-						target="_blank"
-					>
+			teamImages.map((team: TeamWithImageSource) => (
+				<a
+					class="flex items-center flex-shrink-0 gap-4 group"
+					href={team.url}
+					target="_blank"
+				>
+					{typeof team.imageSource === "string" ? (
+						<img
+							src={team.imageSource}
+							alt={team.name}
+							width={36}
+							height={36}
+							class={`rounded-xs ${team.active ? "" : "opacity-50 group-hover:opacity-100"}`}
+							loading="lazy"
+							decoding="async"
+						/>
+					) : (
 						<Image
-							src={team.image}
+							src={team.imageSource}
 							alt={team.name}
 							width={36}
 							height={36}
 							class={`rounded-xs ${team.active ? "" : "opacity-50 group-hover:opacity-100"}`}
 						/>
-						<div class="flex flex-col space-y-0.5">
-							<h3
-								class={`text-sm font-medium ${team.active ? "" : "text-muted-foreground"} group-hover:text-primary`}
-							>
-								<span class="animated-underline group-hover:after:w-full">
-									{team.name}
-								</span>
-							</h3>
-							<span class="text-xs text-muted-foreground/90 group-hover:text-muted-foreground">
-								{team.role}
+					)}
+					<div class="flex flex-col space-y-0.5">
+						<h3
+							class={`text-sm font-medium ${team.active ? "" : "text-muted-foreground"} group-hover:text-primary`}
+						>
+							<span class="animated-underline group-hover:after:w-full">
+								{team.name}
 							</span>
-						</div>
-					</a>
-				)
-			)
+						</h3>
+						<span class="text-xs text-muted-foreground/90 group-hover:text-muted-foreground">
+							{team.role}
+						</span>
+					</div>
+				</a>
+			))
 		}
 	</div>
 </section>

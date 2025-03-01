@@ -7,6 +7,29 @@ icon: "podcast"
 import { Image } from "astro:assets";
 import { podcasts } from "../../data/podcasts";
 
+export const podcastImages = Object.fromEntries(
+	await Promise.all(
+		podcasts.map(async (podcast) => {
+			const imagePath = `/src/images/lists/podcasts/${podcast.cover}`;
+			try {
+				const images = import.meta.glob(
+					"/src/images/lists/podcasts/**/*.{jpeg,jpg,png,gif,avif,webp,svg}"
+				);
+				if (images[imagePath]) {
+					const image = await images[imagePath]();
+					return [podcast.cover, image.default];
+				} else {
+					console.error(`Image not found: ${imagePath}`);
+					return [podcast.cover, imagePath];
+				}
+			} catch (error) {
+				console.error(`Error loading image: ${imagePath}`, error);
+				return [podcast.cover, imagePath];
+			}
+		})
+	)
+);
+
 <div class="grid justify-center grid-cols-[repeat(auto-fit,minmax(12rem,1fr))]">
 	{podcasts.map((podcast) => (
 		<a
@@ -15,7 +38,10 @@ import { podcasts } from "../../data/podcasts";
 			class="flex flex-col p-8 outline-[0.5px] outline-muted gap-y-4 group"
 		>
 			<Image
-				src={`/src/images/lists/podcasts/${podcast.cover}`}
+				src={
+					podcastImages[podcast.cover] ||
+					`/src/images/lists/podcasts/${podcast.cover}`
+				}
 				alt={podcast.title}
 				width={300}
 				height={300}
