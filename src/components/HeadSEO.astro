@@ -11,7 +11,7 @@ interface Props {
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 
 if (Astro.props.ogImage === undefined) {
-	Astro.props.ogImage = new URL("og-image.png", canonicalURL);
+	Astro.props.ogImage = new URL("jeffanders-background.jpg", canonicalURL);
 }
 
 const { title, description, ogImage } = Astro.props;
@@ -39,6 +39,20 @@ const { title, description, ogImage } = Astro.props;
 <meta property="twitter:title" content={title} />
 <meta property="twitter:description" content={description} />
 <meta property="twitter:image" content={ogImage} />
+
+<!-- Google Analytics -->
+<script type="text/partytown">
+	// Google tag (gtag.js)
+	window.dataLayer = window.dataLayer || [];
+	function gtag() {
+		dataLayer.push(arguments);
+	}
+	gtag("js", new Date());
+	gtag("config", "G-1GV0KCWYC0");
+</script>
+<script
+	type="text/partytown"
+	src="https://www.googletagmanager.com/gtag/js?id=G-1GV0KCWYC0"></script>
 
 <link
 	rel="preload"
