@@ -85,7 +85,7 @@ interface TeamWithImageSource extends Omit<Team, "image"> {
 								height={40}
 								sizes="160px"
 								class={`rounded-xs ${team.active ? "" : "opacity-50 group-hover:opacity-100 transition-opacity duration-200"}`}
-								loading="lazy"
+								loading="eager"
 								decoding="async"
 							/>
 						) : (
