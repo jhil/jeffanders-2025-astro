@@ -1,6 +1,7 @@
 ---
 import Tile from "./Tile.astro";
 import type { ImageMetadata } from "astro";
+import SectionTitle from "./SectionTitle.astro";
 
 interface Props {
 	talks: Talk[];
@@ -62,9 +63,7 @@ const talkImages = await Promise.all(
 ---
 
 <section id="talks">
-	<h1 class="px-4 sm:px-8 pt-24 pb-8 text-2xl sm:text-3xl font-medium">
-		Talks
-	</h1>
+	<SectionTitle title="Talks" />
 	<div
 		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]"
 	>

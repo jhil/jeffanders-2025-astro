@@ -1,0 +1,50 @@
+---
+type Direction = "left" | "right" | "top" | "bottom";
+
+interface Props {
+	direction: Direction;
+	width?: string; // For left/right masks
+	height?: string; // For top/bottom masks
+	className?: string;
+}
+
+const { direction, width, height, className = "" } = Astro.props;
+
+const getGradientDirection = (direction: Direction) => {
+	switch (direction) {
+		case "left":
+			return "bg-gradient-to-r from-background to-transparent";
+		case "right":
+			return "bg-gradient-to-l from-background to-transparent";
+		case "top":
+			return "bg-gradient-to-b from-background to-transparent";
+		case "bottom":
+			return "bg-gradient-to-t from-background to-transparent";
+	}
+};
+
+const getPositionClasses = (direction: Direction) => {
+	switch (direction) {
+		case "left":
+			return `left-0 top-0 bottom-0 ${width || "w-8"}`;
+		case "right":
+			return `right-0 top-0 bottom-0 ${width || "w-16"}`;
+		case "top":
+			return `top-0 left-0 right-0 ${height || "h-8"}`;
+		case "bottom":
+			return `bottom-0 left-0 right-0 ${height || "h-8"}`;
+	}
+};
+
+const classes = [
+	"absolute",
+	"z-10",
+	"pointer-events-none",
+	getPositionClasses(direction),
+	getGradientDirection(direction),
+	className,
+].join(" ");
+---
+
+<div class={classes}></div>
+

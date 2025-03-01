@@ -1,5 +1,6 @@
 ---
 import Tile from "./Tile.astro";
+import SectionTitle from "./SectionTitle.astro";
 
 /*
   Expects a prop `lists`, an array of objects from the 'lists' collection.
@@ -26,9 +27,7 @@ lists.sort((a, b) => a.data.title.localeCompare(b.data.title));
 ---
 
 <section id="lists">
-	<h1 class="px-4 sm:px-8 pt-24 pb-8 text-2xl sm:text-3xl font-medium">
-		Lists
-	</h1>
+	<SectionTitle title="Lists" />
 	<div
 		class="grid justify-center grid-cols-[repeat(auto-fit,minmax(12rem,1fr))] sm:grid-cols-[repeat(auto-fit,minmax(16rem,1fr))]"
 	>

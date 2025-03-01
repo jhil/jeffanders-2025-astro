@@ -1,6 +1,8 @@
 ---
 import { Image } from "astro:assets";
 import type { ImageMetadata } from "astro";
+import SectionTitle from "./SectionTitle.astro";
+import GradientMask from "./GradientMask.astro";
 
 interface Team {
 	image: string;
@@ -60,12 +62,10 @@ interface TeamWithImageSource extends Omit<Team, "image"> {
 ---
 
 <section id="teams" class="overflow-hidden">
+	<SectionTitle title="Teams" />
 	<div class="relative">
-		<!-- Left gradient mask -->
-		<div
-			class="absolute left-0 top-0 bottom-0 w-8 z-10 pointer-events-none bg-gradient-to-r from-background to-transparent"
-		>
-		</div>
+		<!-- Gradient masks -->
+		<GradientMask direction="left" />
 
 		<div class="flex p-4 sm:p-8 overflow-x-auto no-scrollbar gap-x-12">
 			{
@@ -79,8 +79,8 @@ interface TeamWithImageSource extends Omit<Team, "image"> {
 							<img
 								src={team.imageSource}
 								alt={team.name}
-								width={36}
-								height={36}
+								width={40}
+								height={40}
 								class={`rounded-xs ${team.active ? "" : "opacity-50 group-hover:opacity-100 transition-opacity duration-200"}`}
 								loading="lazy"
 								decoding="async"
@@ -89,8 +89,8 @@ interface TeamWithImageSource extends Omit<Team, "image"> {
 							<Image
 								src={team.imageSource}
 								alt={team.name}
-								width={36}
-								height={36}
+								width={40}
+								height={40}
 								class={`rounded-xs ${team.active ? "" : "opacity-50 group-hover:opacity-100 transition-opacity duration-200"}`}
 							/>
 						)}
@@ -113,10 +113,7 @@ interface TeamWithImageSource extends Omit<Team, "image"> {
 			}
 		</div>
 
-		<!-- Right gradient mask -->
-		<div
-			class="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none bg-gradient-to-l from-background to-transparent"
-		>
-		</div>
+		<!-- Gradient mask -->
+		<GradientMask direction="right" />
 	</div>
 </section>
