@@ -18,6 +18,7 @@ interface Props {
 		width: number;
 		height: number;
 		class?: string;
+		priority?: boolean;
 	};
 	title: string;
 	label?: string;
@@ -53,19 +54,18 @@ const imageSize = dense ? 48 : (image?.width ?? 0);
 	style={`--cursor-color: ${color ? `#${color.replace("#", "")}` : "#FFFF00"}`}
 >
 	<script>
-		function handleMouseMove(e: Event) {
-			const event = e as MouseEvent;
-			const tile = event.currentTarget as HTMLElement;
+		function handleMouseMove(e: MouseEvent) {
+			const tile = e.currentTarget as HTMLElement;
 			const rect = tile.getBoundingClientRect();
-			const x = event.clientX - rect.left;
-			const y = event.clientY - rect.top;
+			const x = e.clientX - rect.left;
+			const y = e.clientY - rect.top;
 
 			tile.style.setProperty("--x", `${x}px`);
 			tile.style.setProperty("--y", `${y}px`);
 			tile.classList.add("active");
 		}
 
-		function handleMouseLeave(e: Event) {
+		function handleMouseLeave(e: MouseEvent) {
 			const tile = e.currentTarget as HTMLElement;
 			tile.classList.remove("active");
 			tile.style.removeProperty("--x");
@@ -109,8 +109,9 @@ const imageSize = dense ? 48 : (image?.width ?? 0);
 						width={dense ? 48 : image.width}
 						height={dense ? 48 : image.height}
 						class="absolute object-cover w-full h-full rounded-xs mix-blend-multiply dark:mix-blend-screen"
-						loading="lazy"
+						loading={image.priority ? "eager" : "lazy"}
 						decoding="async"
+						fetchpriority={image.priority ? "high" : "auto"}
 					/>
 				) : (
 					<Image
@@ -119,7 +120,7 @@ const imageSize = dense ? 48 : (image?.width ?? 0);
 						width={dense ? 48 : image.width}
 						height={dense ? 48 : image.height}
 						class="absolute object-cover w-full h-full rounded-xs mix-blend-multiply dark:mix-blend-screen"
-						loading="lazy"
+						loading={image.priority ? "eager" : "lazy"}
 						decoding="async"
 					/>
 				)}
