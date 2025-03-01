@@ -68,7 +68,7 @@ const projectImages = await Promise.all(
 			projectImages.map(({ project, imageSource }) => {
 				const link = project.data.external
 					? project.data.external
-					: `/projects/${project.slug}`;
+					: `/${project.slug}`;
 
 				return (
 					<Tile

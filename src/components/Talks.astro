@@ -68,7 +68,7 @@ const talkImages = await Promise.all(
 		{
 			talkImages.map(({ talk, imageSource }) => {
 				const fm = talk.data;
-				const link = fm.external || `/talks/${talk.slug}`;
+				const link = fm.external || `/${talk.slug}`;
 
 				return (
 					<Tile

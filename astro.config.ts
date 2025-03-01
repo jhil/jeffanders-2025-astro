@@ -20,6 +20,10 @@ export default defineConfig({
 		plugins: [tailwindcss()],
 	},
 
+	experimental: {
+		responsiveImages: true,
+	},
+
 	output: "static",
 	adapter: netlify({
 		imageCDN: false,

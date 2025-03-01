@@ -1,0 +1,86 @@
+---
+import { getCollection, render } from "astro:content";
+import type { CollectionEntry } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import "@/styles/global.css";
+
+// Define a type for all possible content entries
+type ContentEntry =
+	| CollectionEntry<"projects">
+	| CollectionEntry<"lists">
+	| CollectionEntry<"talks">;
+
+export async function getStaticPaths() {
+	// Get all collections
+	const projects = await getCollection("projects");
+	const lists = await getCollection("lists");
+	const talks = await getCollection("talks");
+
+	// Combine all collections
+	const allContent = [
+		...projects.map((entry: CollectionEntry<"projects">) => ({
+			entry,
+			collection: "projects",
+		})),
+		...lists.map((entry: CollectionEntry<"lists">) => ({
+			entry,
+			collection: "lists",
+		})),
+		...talks.map((entry: CollectionEntry<"talks">) => ({
+			entry,
+			collection: "talks",
+		})),
+	];
+
+	// Create paths for all content items
+	return allContent.map(({ entry, collection }) => {
+		// Remove file extension if present in the ID
+		const slug = entry.id.replace(/\.(mdx|md)$/, "");
+
+		return {
+			params: { slug },
+			props: { entry, collection },
+		};
+	});
+}
+
+const { entry, collection } = Astro.props as {
+	entry: ContentEntry;
+	collection: string;
+};
+
+const { Content } = await render(entry);
+
+// Get appropriate metadata based on content type
+const title = entry.data.title;
+
+// Handle different description fields based on content type
+let description = "";
+if ("brief" in entry.data) {
+	description = entry.data.brief;
+} else if ("description" in entry.data) {
+	description = entry.data.description;
+}
+
+// Handle different image fields based on content type
+let ogImage;
+if ("cover" in entry.data) {
+	ogImage = entry.data.cover;
+} else if ("ogImage" in entry.data) {
+	ogImage = entry.data.ogImage;
+}
+
+// Determine layout style based on content type
+const isListContent = collection === "lists";
+---
+
+<BaseLayout title={title} description={description} ogImage={ogImage}>
+	<article
+		class={`flex flex-col py-8 mx-auto prose gap-16 ${isListContent ? "" : "px-8 max-w-screen-lg"}`}
+	>
+		<h1 class={`${isListContent ? "px-8" : ""} text-6xl font-medium`}>
+			{title}
+		</h1>
+		<Content />
+	</article>
+</BaseLayout>

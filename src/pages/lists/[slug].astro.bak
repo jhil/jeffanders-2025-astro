@@ -6,7 +6,7 @@ import "@/styles/global.css";
 
 export async function getStaticPaths() {
 	const lists = await getCollection("lists");
-	return lists.map((list) => ({
+	return lists.map((list: CollectionEntry<"lists">) => ({
 		params: { slug: list.id },
 		props: { list },
 	}));
