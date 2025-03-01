@@ -60,49 +60,63 @@ interface TeamWithImageSource extends Omit<Team, "image"> {
 ---
 
 <section id="teams" class="overflow-hidden">
-	<div class="flex p-4 sm:p-8 overflow-x-auto no-scrollbar gap-x-12">
-		{
-			teamImages.map((team: TeamWithImageSource) => (
-				<a
-					class="flex items-center flex-shrink-0 gap-4 group"
-					href={team.url}
-					target="_blank"
-				>
-					{typeof team.imageSource === "string" ? (
-						<img
-							src={team.imageSource}
-							alt={team.name}
-							width={36}
-							height={36}
-							class={`rounded-xs ${team.active ? "" : "opacity-50 group-hover:opacity-100 transition-opacity duration-200"}`}
-							loading="lazy"
-							decoding="async"
-						/>
-					) : (
-						<Image
-							src={team.imageSource}
-							alt={team.name}
-							width={36}
-							height={36}
-							class={`rounded-xs ${team.active ? "" : "opacity-50 group-hover:opacity-100 transition-opacity duration-200"}`}
-						/>
-					)}
-					<div class="flex flex-col space-y-0.5">
-						<h3
-							class={`text-sm font-medium ${team.active ? "" : "text-muted-foreground/50"} group-hover:text-primary`}
-						>
-							<span class="animated-underline group-hover:after:w-full">
-								{team.name}
+	<div class="relative">
+		<!-- Left gradient mask -->
+		<div
+			class="absolute left-0 top-0 bottom-0 w-8 z-10 pointer-events-none bg-gradient-to-r from-background to-transparent"
+		>
+		</div>
+
+		<div class="flex p-4 sm:p-8 overflow-x-auto no-scrollbar gap-x-12">
+			{
+				teamImages.map((team: TeamWithImageSource) => (
+					<a
+						class="flex items-center flex-shrink-0 gap-4 group"
+						href={team.url}
+						target="_blank"
+					>
+						{typeof team.imageSource === "string" ? (
+							<img
+								src={team.imageSource}
+								alt={team.name}
+								width={36}
+								height={36}
+								class={`rounded-xs ${team.active ? "" : "opacity-50 group-hover:opacity-100 transition-opacity duration-200"}`}
+								loading="lazy"
+								decoding="async"
+							/>
+						) : (
+							<Image
+								src={team.imageSource}
+								alt={team.name}
+								width={36}
+								height={36}
+								class={`rounded-xs ${team.active ? "" : "opacity-50 group-hover:opacity-100 transition-opacity duration-200"}`}
+							/>
+						)}
+						<div class="flex flex-col space-y-0.5">
+							<h3
+								class={`text-sm font-medium ${team.active ? "" : "text-muted-foreground/50"} group-hover:text-primary`}
+							>
+								<span class="animated-underline group-hover:after:w-full">
+									{team.name}
+								</span>
+							</h3>
+							<span
+								class={`text-xs ${team.active ? "text-muted-foreground" : "text-muted-foreground/50"} group-hover:text-muted-foreground transition-color duration-200`}
+							>
+								{team.role}
 							</span>
-						</h3>
-						<span
-							class={`text-xs ${team.active ? "text-muted-foreground" : "text-muted-foreground/50"} group-hover:text-muted-foreground transition-color duration-200`}
-						>
-							{team.role}
-						</span>
-					</div>
-				</a>
-			))
-		}
+						</div>
+					</a>
+				))
+			}
+		</div>
+
+		<!-- Right gradient mask -->
+		<div
+			class="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none bg-gradient-to-l from-background to-transparent"
+		>
+		</div>
 	</div>
 </section>
