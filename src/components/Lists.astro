@@ -31,9 +31,7 @@ lists.sort((a, b) => a.data.title.localeCompare(b.data.title));
 	>
 		{
 			lists.map((list) => {
-				const link = list.data.external
-					? list.data.external
-					: `/lists/${list.slug}`;
+				const link = list.data.external ? list.data.external : `/${list.slug}`;
 
 				return (
 					<Tile
