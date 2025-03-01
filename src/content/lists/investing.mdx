@@ -1,5 +1,5 @@
 ---
-title: "Angel"
+title: "Investing"
 date: "2025-02-01"
 icon: "shrub"
 ---
@@ -21,8 +21,8 @@ import { investments } from "../../data/investments";
 						: `/src/images/lists/investments/${investment.cover}`
 				}
 				alt={investment.company}
-				width={32}
-				height={32}
+				width={40}
+				height={40}
 				class="object-contain rounded-xs aspect-square"
 				loading="lazy"
 				decoding="async"
@@ -30,7 +30,7 @@ import { investments } from "../../data/investments";
 			<div class="flex flex-col justify-center">
 				<h3 class="font-medium group-hover:underline">{investment.company}</h3>
 				{investment.label && (
-					<span class="text-sm text-gray-400">{investment.label}</span>
+					<span class="text-sm text-muted-foreground">{investment.label}</span>
 				)}
 			</div>
 		</a>

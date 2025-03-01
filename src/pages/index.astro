@@ -8,11 +8,13 @@ import Contact from "../components/Contact.astro";
 import Footer from "../components/Footer.astro";
 import { teams } from "../data/teams";
 import { getCollection } from "astro:content";
+import type { CollectionEntry } from "astro:content";
 
 const projects = await getCollection("projects");
 const lists = await getCollection("lists");
 const talksCollection = await getCollection("talks");
-const talks = talksCollection.map((entry) => ({
+
+const talks = talksCollection.map((entry: CollectionEntry<"talks">) => ({
 	...entry,
 	slug: entry.id,
 }));
@@ -22,10 +24,12 @@ const talks = talksCollection.map((entry) => ({
 	title="Jeff Anders"
 	description="Co-Founder of Ambrook. Previously design at Scale AI, Meta, Minimill, Autodesk, and Venmo. Alum of Maryland. I like making cool things with cool people."
 >
-	<Teams teams={teams} />
-	<Projects projects={projects} />
-	<Talks talks={talks} />
-	<Lists lists={lists} />
-	<Contact />
-	<Footer />
+	<div class="gap-y-8">
+		<Teams teams={teams} />
+		<Projects projects={projects} />
+		<Talks talks={talks} />
+		<Lists lists={lists} />
+		<Contact />
+		<Footer />
+	</div>
 </BaseLayout>

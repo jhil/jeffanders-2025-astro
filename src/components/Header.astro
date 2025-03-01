@@ -3,6 +3,7 @@ import ThemeToggle from "@/components/ThemeToggle.astro";
 import { Image } from "astro:assets";
 import { Button } from "@/components/ui/button";
 import avatarImage from "../images/jeff-anders-photo.jpg";
+import { Icon } from "astro-icon/components";
 
 const navItems = [
 	{ label: "Teams", href: "/#teams" },
@@ -24,7 +25,7 @@ const navItems = [
 			width={80}
 			height={80}
 		/>
-		<h1 class="font-semibold text-lg">Jeff Anders</h1>
+		<h1 class="font-semibold text-md">Jeff Anders</h1>
 	</a>
 
 	<!-- Desktop Navigation -->
@@ -57,32 +58,8 @@ const navItems = [
 			aria-label="Toggle mobile menu"
 			class="p-2 text-foreground"
 		>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="w-6 h-6 menu-icon"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
-			</svg>
-			<svg
-				xmlns="http://www.w3.org/2000/svg"
-				fill="none"
-				viewBox="0 0 24 24"
-				stroke-width="1.5"
-				stroke="currentColor"
-				class="w-6 h-6 close-icon hidden"
-			>
-				<path
-					stroke-linecap="round"
-					stroke-linejoin="round"
-					d="M6 18L18 6M6 6l12 12"></path>
-			</svg>
+			<Icon name="lucide:menu" class="w-4 h-4 color-current menu-icon" />
+			<Icon name="lucide:x" class="w-4 h-4 color-current close-icon hidden" />
 		</button>
 	</div>
 </header>
